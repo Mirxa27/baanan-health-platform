@@ -1,30 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Baanan Health Platform
+
+A modern health platform built with Next.js, featuring the Halol app and comprehensive health services.
+
+## Features
+
+- Modern, responsive design
+- Multi-language support (English/Arabic)
+- Interactive health services showcase
+- Halol app integration
+- Contact and consultation booking
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Vercel Deployment (Recommended)
 
-## Learn More
+1. **Connect to Vercel:**
+   ```bash
+   npm i -g vercel
+   vercel login
+   vercel
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Or deploy via GitHub:**
+   - Go to [vercel.com](https://vercel.com)
+   - Import your GitHub repository: `Mirxa27/baanan-health-platform`
+   - Vercel will automatically detect Next.js and configure the build settings
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Environment Variables:**
+   - No environment variables required for basic deployment
+   - Add any API keys or external service credentials in Vercel dashboard if needed
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Manual Deployment Steps
+
+1. **Build the project:**
+   ```bash
+   npm run build
+   ```
+
+2. **Test production build locally:**
+   ```bash
+   npm start
+   ```
+
+3. **Deploy to Vercel:**
+   ```bash
+   vercel --prod
+   ```
+
+## Project Structure
+
+```
+├── app/                 # Next.js 13+ app directory
+├── components/          # Reusable components
+├── public/             # Static assets (including logo)
+├── vercel.json         # Vercel configuration
+└── package.json        # Dependencies and scripts
+```
+
+## Technologies Used
+
+- Next.js 15.3.2
+- React 19
+- TypeScript
+- Tailwind CSS
+- Recharts for data visualization
+- Google Maps API integration
+
+## Repository
+
+GitHub: https://github.com/Mirxa27/baanan-health-platform
