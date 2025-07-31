@@ -1,121 +1,109 @@
 'use client';
-
 import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useLanguage } from '../app/contexts/LanguageContext';
-
-interface NavItem {
-  name: string;
-  href: string;
-}
-
-interface NavItems {
-  en: NavItem[];
-  ar: NavItem[];
-}
-
-const navItems: NavItems = {
-  en: [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Products', href: '/products' },
-    { name: 'Consultancy', href: '/consultancy' },
-    { name: 'Halol App', href: '/halol' },
-    { name: 'Resources', href: '/resources' },
-    { name: 'Contact', href: '/contact' },
-  ],
-  ar: [
-    { name: 'الرئيسية', href: '/' },
-    { name: 'عن الشركة', href: '/about' },
-    { name: 'المنتجات', href: '/products' },
-    { name: 'الاستشارات', href: '/consultancy' },
-    { name: 'تطبيق هلول', href: '/halol' },
-    { name: 'الموارد', href: '/resources' },
-    { name: 'اتصل بنا', href: '/contact' },
-  ],
-};
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { language, setLanguage } = useLanguage();
+  const [language, setLanguage] = useState<'en' | 'ar'>('en');
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'ar' : 'en');
+  };
+
+  const navItems = {
+    en: [
+      { name: 'Home', href: '/' },
+      { name: 'About', href: '/about' },
+      { name: 'Products & Services', href: '/products' },
+      { name: 'Halol App', href: '/halol' },
+      { name: 'Consultancy', href: '/consultancy' },
+      { name: 'Resources', href: '/resources' },
+      { name: 'Contact', href: '/contact' }
+    ],
+    ar: [
+      { name: 'الرئيسية', href: '/' },
+      { name: 'عنا', href: '/about' },
+      { name: 'المنتجات والخدمات', href: '/products' },
+      { name: 'تطبيق حلول', href: '/halol' },
+      { name: 'الاستشارات', href: '/consultancy' },
+      { name: 'الموارد', href: '/resources' },
+      { name: 'اتصل بنا', href: '/contact' }
+    ]
+  };
 
   return (
-    <header className="bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/baanan-logo.png"
-              alt="Baanan Health Platform"
-              width={120}
-              height={40}
-              className="h-10 w-auto"
-              priority
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <div className="px-6 py-4">
+        <div className="flex items-center justify-between">
+          <Link href="/" className="flex items-center cursor-pointer">
+            <img 
+              src="/baanan-logo.png" 
+              alt="Baanan Logo" 
+              className="h-10 w-auto object-contain object-left"
+              style={{
+                filter: 'brightness(1.1) contrast(1.1)',
+                imageRendering: 'crisp-edges'
+              }}
             />
           </Link>
 
-          {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navItems[language as 'en' | 'ar'].map((item) => (
+            {navItems[language].map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-700 hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors cursor-pointer whitespace-nowrap"
               >
                 {item.name}
               </Link>
             ))}
           </nav>
 
-          {/* Language Switcher */}
           <div className="flex items-center space-x-4">
             <button
-              onClick={() => setLanguage(language === 'en' ? 'ar' : 'en')}
-              className="px-3 py-1 text-sm font-medium text-gray-700 hover:text-green-600 border border-gray-300 rounded-md hover:border-green-600 transition-colors"
+              onClick={toggleLanguage}
+              className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors cursor-pointer whitespace-nowrap"
             >
               {language === 'en' ? 'العربية' : 'English'}
             </button>
-
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 rounded-md text-gray-700 hover:text-green-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
+            
+            <Link
+              href="/halol"
+              className="hidden md:block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition-opacity cursor-pointer whitespace-nowrap"
             >
-              <span className="sr-only">Open main menu</span>
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
+              {language === 'en' ? 'Get Halol App' : 'حمل تطبيق حلول'}
+            </Link>
+
+            <button
+              className="lg:hidden w-6 h-6 flex items-center justify-center cursor-pointer"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <i className="ri-menu-line text-xl"></i>
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="lg:hidden mt-4 pb-4 border-t border-gray-100">
+            <nav className="flex flex-col space-y-3 mt-4">
               {navItems[language].map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-green-600 hover:bg-gray-50"
+                  className="text-gray-700 hover:text-blue-600 font-medium transition-colors cursor-pointer"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-            </div>
+              <Link
+                href="/halol"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium text-center mt-4 cursor-pointer whitespace-nowrap"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {language === 'en' ? 'Get Halol App' : 'حمل تطبيق حلول'}
+              </Link>
+            </nav>
           </div>
         )}
       </div>
