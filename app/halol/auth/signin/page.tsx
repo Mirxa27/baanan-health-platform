@@ -166,19 +166,19 @@ export default function SigninPage() {
               {isLoading ? (
                 <div className="flex items-center justify-center">
                   <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Signing in...
+                  {t('signing_in')}
                 </div>
               ) : (
-                'Sign In'
+                t('sign_in_button')
               )}
             </button>
           </div>
 
           <div className="text-center">
             <p className="text-sm text-gray-600">
-              Don't have an account?{' '}
+              {t('no_account')}{' '}
               <Link href="/halol/auth/signup" className="text-blue-600 hover:text-blue-500 font-medium">
-                Sign up
+                {t('sign_up_link')}
               </Link>
             </p>
           </div>
