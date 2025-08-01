@@ -18,16 +18,7 @@ export default function Leadership() {
           <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12 max-w-5xl">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               <div className="text-center lg:text-left order-2 lg:order-1">
-                <div className="mb-6 sm:mb-8">
-                  <div className="w-48 sm:w-56 lg:w-64 h-60 sm:h-72 lg:h-80 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl sm:rounded-2xl shadow-2xl mx-auto lg:mx-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
-                        <i className="ri-user-line text-3xl text-blue-600"></i>
-                      </div>
-                      <p className="text-blue-600 font-medium">Professional Photo</p>
-                    </div>
-                  </div>
-                </div>
+
               </div>
               
               <div className="order-1 lg:order-2">
@@ -82,13 +73,7 @@ export default function Leadership() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center">
-            <div className="w-24 sm:w-28 lg:w-32 h-30 sm:h-36 lg:h-40 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg sm:rounded-xl mx-auto mb-4 sm:mb-6 shadow-lg flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm">
-                  <i className="ri-user-line text-lg text-blue-600"></i>
-                </div>
-              </div>
-            </div>
+
             <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Abdullah Mirza</h4>
             <p className="text-blue-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">Chief Technology Officer</p>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
@@ -97,13 +82,7 @@ export default function Leadership() {
           </div>
 
           <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center">
-            <div className="w-24 sm:w-28 lg:w-32 h-30 sm:h-36 lg:h-40 bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg sm:rounded-xl mx-auto mb-4 sm:mb-6 shadow-lg flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm">
-                  <i className="ri-user-line text-lg text-purple-600"></i>
-                </div>
-              </div>
-            </div>
+
             <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Omar Al huwaid</h4>
             <p className="text-purple-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">Chief Marketing Officer</p>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
@@ -112,13 +91,7 @@ export default function Leadership() {
           </div>
 
           <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center sm:col-span-2 lg:col-span-1 max-w-sm mx-auto sm:max-w-none">
-            <div className="w-24 sm:w-28 lg:w-32 h-30 sm:h-36 lg:h-40 bg-gradient-to-br from-green-100 to-blue-100 rounded-lg sm:rounded-xl mx-auto mb-4 sm:mb-6 shadow-lg flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm">
-                  <i className="ri-user-line text-lg text-green-600"></i>
-                </div>
-              </div>
-            </div>
+
             <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Bassam muhammad</h4>
             <p className="text-green-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">Chief Operations Officer</p>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
