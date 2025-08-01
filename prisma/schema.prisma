@@ -123,7 +123,7 @@ model MaintenanceRequest {
   status      MaintenanceStatus @default(PENDING)
   scheduledAt DateTime?
   completedAt DateTime?
-  cost        Float?
+  cost        Decimal?  @db.Decimal(10, 2)
   notes       String?
   createdAt   DateTime          @default(now())
   updatedAt   DateTime          @updatedAt
