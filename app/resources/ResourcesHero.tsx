@@ -1,5 +1,5 @@
 'use client';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function ResourcesHero() {
   const { t } = useTranslation('resources');

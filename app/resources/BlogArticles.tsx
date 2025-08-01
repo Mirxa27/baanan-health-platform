@@ -1,5 +1,5 @@
 'use client';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function BlogArticles() {
   const { t } = useTranslation('resources'); // Assuming 'resources' namespace for this component
