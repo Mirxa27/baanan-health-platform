@@ -37,8 +37,8 @@ model Device {
   category    String
   brand       String
   model       String
-  price       Float
-  rentPrice   Float      // Daily rent price
+  price       Decimal    @db.Decimal(10, 2)
+  rentPrice   Decimal    @db.Decimal(10, 2) // Daily rent price
   imageUrl    String?
   isAvailable Boolean    @default(true)
   stock       Int        @default(0)
