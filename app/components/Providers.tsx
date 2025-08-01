@@ -1,6 +1,6 @@
 'use client';
 import NextAuthProvider from './NextAuthProvider';
-import { I18nProvider } from './I18nProvider';
+import { I18nProvider } from './I18nProvider.simple';
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
