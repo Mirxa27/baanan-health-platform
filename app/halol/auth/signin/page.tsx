@@ -15,7 +15,8 @@ export default function SigninPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+    setError('');
+
     try {
       const result = await signIn('credentials', {
         email: formData.email,
@@ -25,12 +26,16 @@ export default function SigninPage() {
 
       if (result?.error) {
         console.error('Sign in error:', result.error);
-      } else {
+        setError('Invalid email or password. Please try again.');
+      } else if (result?.ok) {
         // Redirect to dashboard on success
         window.location.href = '/halol/dashboard';
+      } else {
+        setError('An unexpected error occurred. Please try again.');
       }
     } catch (error) {
       console.error('Sign in error:', error);
+      setError('Unable to connect to authentication service. Please try again.');
     } finally {
       setIsLoading(false);
     }
