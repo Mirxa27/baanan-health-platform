@@ -57,14 +57,14 @@ export default function SigninPage() {
       // Handle specific JSON parsing errors
       if (error instanceof Error) {
         if (error.message.includes('Unexpected end of JSON input')) {
-          setError('Authentication service returned invalid response. Please try again.');
+          setError(t('invalid_response'));
         } else if (error.message.includes('Failed to fetch')) {
-          setError('Network connection error. Please check your connection and try again.');
+          setError(t('connection_error'));
         } else {
-          setError(`Connection error: ${error.message}`);
+          setError(`${t('connection_error')}: ${error.message}`);
         }
       } else {
-        setError('An unexpected error occurred. Please try again.');
+        setError(t('error_occurred'));
       }
     } finally {
       setIsLoading(false);
