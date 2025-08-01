@@ -1,4 +1,3 @@
-
 'use client';
 
 export default function Leadership() {
@@ -20,11 +19,14 @@ export default function Leadership() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               <div className="text-center lg:text-left order-2 lg:order-1">
                 <div className="mb-6 sm:mb-8">
-                  <img 
-                    src="https://readdy.ai/api/search-image?query=professional%20Middle%20Eastern%20male%20CEO%20executive%20in%20business%20suit%2C%20confident%20healthcare%20technology%20leader%2C%20modern%20corporate%20portrait%2C%20clean%20professional%20background%2C%20successful%20entrepreneur%20in%20healthcare%20industry&width=400&height=500&seq=ceo-sultan&orientation=portrait"
-                    alt="Eng. Sultan Al Khamshi"
-                    className="w-48 sm:w-56 lg:w-64 h-60 sm:h-72 lg:h-80 object-cover object-top rounded-xl sm:rounded-2xl shadow-2xl mx-auto lg:mx-0"
-                  />
+                  <div className="w-48 sm:w-56 lg:w-64 h-60 sm:h-72 lg:h-80 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl sm:rounded-2xl shadow-2xl mx-auto lg:mx-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
+                        <i className="ri-user-line text-3xl text-blue-600"></i>
+                      </div>
+                      <p className="text-blue-600 font-medium">Professional Photo</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               
@@ -80,12 +82,14 @@ export default function Leadership() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center">
-            <img 
-              src="https://readdy.ai/api/search-image?query=professional%20Middle%20Eastern%20female%20technology%20executive%2C%20confident%20healthcare%20CTO%2C%20modern%20corporate%20portrait%2C%20clean%20professional%20background%2C%20successful%20woman%20in%20healthcare%20technology&width=300&height=400&seq=leadership-cto&orientation=portrait"
-              alt="Dr. Aisha Al-Mahmoud"
-              className="w-24 sm:w-28 lg:w-32 h-30 sm:h-36 lg:h-40 object-cover object-top rounded-lg sm:rounded-xl mx-auto mb-4 sm:mb-6 shadow-lg"
-            />
-            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Dr. Aisha Al-Mahmoud</h4>
+            <div className="w-24 sm:w-28 lg:w-32 h-30 sm:h-36 lg:h-40 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg sm:rounded-xl mx-auto mb-4 sm:mb-6 shadow-lg flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm">
+                  <i className="ri-user-line text-lg text-blue-600"></i>
+                </div>
+              </div>
+            </div>
+            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Abdullah Mirza</h4>
             <p className="text-blue-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">Chief Technology Officer</p>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
               Leading our AI and machine learning initiatives with 12+ years in healthcare technology development.
@@ -93,25 +97,29 @@ export default function Leadership() {
           </div>
 
           <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center">
-            <img 
-              src="https://readdy.ai/api/search-image?query=professional%20Middle%20Eastern%20male%20medical%20director%2C%20confident%20healthcare%20CMO%2C%20modern%20corporate%20portrait%2C%20clean%20professional%20background%2C%20successful%20doctor%20in%20healthcare%20leadership&width=300&height=400&seq=leadership-cmo&orientation=portrait"
-              alt="Dr. Ahmed Al-Rashid"
-              className="w-24 sm:w-28 lg:w-32 h-30 sm:h-36 lg:h-40 object-cover object-top rounded-lg sm:rounded-xl mx-auto mb-4 sm:mb-6 shadow-lg"
-            />
-            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Dr. Ahmed Al-Rashid</h4>
-            <p className="text-purple-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">Chief Medical Officer</p>
+            <div className="w-24 sm:w-28 lg:w-32 h-30 sm:h-36 lg:h-40 bg-gradient-to-br from-purple-100 to-pink-100 rounded-lg sm:rounded-xl mx-auto mb-4 sm:mb-6 shadow-lg flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm">
+                  <i className="ri-user-line text-lg text-purple-600"></i>
+                </div>
+              </div>
+            </div>
+            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Omar Al huwaid</h4>
+            <p className="text-purple-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">Chief Marketing Officer</p>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              Overseeing clinical excellence and medical device integration with 18+ years of medical expertise.
+              Driving market expansion and strategic partnerships with 18+ years of marketing and business development expertise.
             </p>
           </div>
 
           <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center sm:col-span-2 lg:col-span-1 max-w-sm mx-auto sm:max-w-none">
-            <img 
-              src="https://readdy.ai/api/search-image?query=professional%20Middle%20Eastern%20female%20business%20executive%2C%20confident%20healthcare%20COO%2C%20modern%20corporate%20portrait%2C%20clean%20professional%20background%2C%20successful%20woman%20in%20healthcare%20operations&width=300&height=400&seq=leadership-coo&orientation=portrait"
-              alt="Fatima Al-Zahra"
-              className="w-24 sm:w-28 lg:w-32 h-30 sm:h-36 lg:h-40 object-cover object-top rounded-lg sm:rounded-xl mx-auto mb-4 sm:mb-6 shadow-lg"
-            />
-            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Fatima Al-Zahra</h4>
+            <div className="w-24 sm:w-28 lg:w-32 h-30 sm:h-36 lg:h-40 bg-gradient-to-br from-green-100 to-blue-100 rounded-lg sm:rounded-xl mx-auto mb-4 sm:mb-6 shadow-lg flex items-center justify-center">
+              <div className="text-center">
+                <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm">
+                  <i className="ri-user-line text-lg text-green-600"></i>
+                </div>
+              </div>
+            </div>
+            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Bassam muhammad</h4>
             <p className="text-green-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">Chief Operations Officer</p>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
               Streamlining operations and scaling our healthcare solutions across the region with proven excellence.
