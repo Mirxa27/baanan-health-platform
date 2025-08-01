@@ -63,7 +63,7 @@ model Order {
   updatedAt   DateTime    @updatedAt
 
   // Relations
-  user       User        @relation(fields: [userId], references: [id])
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   orderItems OrderItem[]
 
   @@map("orders")
