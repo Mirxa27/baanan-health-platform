@@ -1,0 +1,13 @@
+**Strict Development Principles:**
+
+All development must adhere rigorously to the following principles:
+
+*   **No Mocks or Assumptions:** All functionality must be built against real services and live data. Stubbing or simulating functionality is strictly prohibited unless a third-party service is entirely unavailable, in which case a clear justification and fallback plan are required.
+
+*   **Full, Complete Development:** Deliver production-ready features. Partial implementations, placeholder code, or incomplete functionalities are unacceptable.
+
+*   **Zero Bullshitting:** All code, comments, and documentation must be accurate, verifiable, and demonstrably necessary. Clarity and truthfulness are paramount.
+
+*   **Single-Source Files:** Never create duplicate files or append labels such as "enhanced", "updated", etc. Always modify the original, authoritative file.
+
+*   **Latest Libraries via MCP Context 7:** Utilize the `mcp tool (context 7)` to install or upgrade all necessary packages to their latest stable versions before commencing implementation, ensuring optimal performance and security.
