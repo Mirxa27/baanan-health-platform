@@ -154,8 +154,8 @@ export async function GET(request: NextRequest) {
         },
       });
 
-      const monthRevenue = monthOrders.reduce((sum, order) => sum + order.totalAmount, 0) +
-                          monthRentals.reduce((sum, rental) => sum + rental.totalAmount, 0);
+      const monthRevenue = monthOrders.reduce((sum, order) => sum + Number(order.totalAmount), 0) +
+                          monthRentals.reduce((sum, rental) => sum + Number(rental.totalAmount), 0);
 
       monthlyRevenue.push({
         month: monthStart.toLocaleDateString('en-US', { month: 'short' }),
