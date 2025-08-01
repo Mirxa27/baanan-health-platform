@@ -174,7 +174,7 @@ export async function GET(request: NextRequest) {
           deviceSales.set(key, {
             name: key,
             sales: existing.sales + item.quantity,
-            revenue: existing.revenue + (item.price * item.quantity),
+            revenue: existing.revenue + (Number(item.price) * item.quantity),
           });
         } else {
           deviceSales.set(key, {
