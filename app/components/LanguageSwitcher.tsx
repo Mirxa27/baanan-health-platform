@@ -2,31 +2,32 @@
 
 import React from 'react';
 import useTranslation from 'next-translate/useTranslation';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 
 interface LanguageSwitcherProps {
   className?: string;
 }
 
 export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
-  const { t, locale, setLocale } = useTranslation('common');
+  const { lang } = useTranslation('common');
   const router = useRouter();
+  const pathname = usePathname();
 
   const toggleLanguage = () => {
-    const newLocale = locale === 'en' ? 'ar' : 'en';
-    setLocale(newLocale);
-    // Refresh the page to apply the language change
-    router.refresh();
+    const newLocale = lang === 'en' ? 'ar' : 'en';
+    // For next-translate, we need to navigate to the new locale URL
+    const newPath = pathname.replace(/^\/[a-z]{2}/, '') || '/';
+    router.push(`/${newLocale}${newPath}`);
   };
 
   return (
     <button
       onClick={toggleLanguage}
       className={`flex items-center space-x-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors ${className}`}
-      aria-label={`Switch to ${locale === 'en' ? 'Arabic' : 'English'}`}
+      aria-label={`Switch to ${lang === 'en' ? 'Arabic' : 'English'}`}
     >
       <span className="text-sm font-medium">
-        {locale === 'en' ? 'العربية' : 'English'}
+        {lang === 'en' ? 'العربية' : 'English'}
       </span>
       <i className="ri-translate-2 text-lg"></i>
     </button>
@@ -34,8 +35,9 @@ export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
 }
 
 export function LanguageDropdown({ className = '' }: LanguageSwitcherProps) {
-  const { t, locale, setLocale } = useTranslation('common');
+  const { lang } = useTranslation('common');
   const router = useRouter();
+  const pathname = usePathname();
 
   const languages = [
     { code: 'en', name: 'English', nativeName: 'English' },
@@ -43,15 +45,14 @@ export function LanguageDropdown({ className = '' }: LanguageSwitcherProps) {
   ];
 
   const handleLanguageChange = (newLocale: string) => {
-    setLocale(newLocale as 'en' | 'ar');
-    // Refresh the page to apply the language change
-    router.refresh();
+    const newPath = pathname.replace(/^\/[a-z]{2}/, '') || '/';
+    router.push(`/${newLocale}${newPath}`);
   };
 
   return (
     <div className={`relative ${className}`}>
       <select
-        value={locale}
+        value={lang}
         onChange={(e) => handleLanguageChange(e.target.value)}
         className="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2 pr-8 text-sm font-medium hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
       >
