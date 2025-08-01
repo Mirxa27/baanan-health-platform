@@ -7,14 +7,8 @@ interface NextAuthProviderProps {
 }
 
 export default function NextAuthProvider({ children }: NextAuthProviderProps) {
-  const baseUrl = typeof window !== 'undefined' 
-    ? window.location.origin 
-    : process.env.NEXTAUTH_URL || 'http://localhost:3000';
-
   return (
-    <SessionProvider 
-      baseUrl={baseUrl}
-      basePath="/api/auth"
+    <SessionProvider
       refetchInterval={5 * 60} // 5 minutes
       refetchOnWindowFocus={true}
     >
