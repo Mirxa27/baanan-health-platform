@@ -1,5 +1,5 @@
 'use client';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function ExpertTeam() {
   const { t } = useTranslation('consultancy'); // Assuming 'consultancy' namespace for this component
