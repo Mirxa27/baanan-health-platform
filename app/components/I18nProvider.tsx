@@ -105,7 +105,14 @@ export function I18nProvider({ children, initialLocale }: I18nProviderProps) {
     };
 
     if (isLoading) {
-        return <div>Loading translations...</div>;
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <div className="text-center">
+                    <div className="animate-spin w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full mx-auto mb-4"></div>
+                    <p className="text-gray-600">Loading translations...</p>
+                </div>
+            </div>
+        );
     }
 
     return (
