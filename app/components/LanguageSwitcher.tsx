@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation';
 import { useRouter, usePathname } from 'next/navigation';
 
 interface LanguageSwitcherProps {
