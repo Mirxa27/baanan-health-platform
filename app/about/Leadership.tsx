@@ -76,28 +76,28 @@ export default function Leadership() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center">
 
-            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Abdullah Mirza</h4>
-            <p className="text-blue-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">Chief Technology Officer</p>
+            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{t('cto_name')}</h4>
+            <p className="text-blue-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">{t('cto_title')}</p>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              Leading our AI and machine learning initiatives with 12+ years in healthcare technology development.
+              {t('cto_description')}
             </p>
           </div>
 
           <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center">
 
-            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Omar Al huwaid</h4>
-            <p className="text-purple-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">Chief Marketing Officer</p>
+            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{t('cmo_name')}</h4>
+            <p className="text-purple-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">{t('cmo_title')}</p>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              Driving market expansion and strategic partnerships with 18+ years of marketing and business development expertise.
+              {t('cmo_description')}
             </p>
           </div>
 
           <div className="bg-gray-50 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center sm:col-span-2 lg:col-span-1 max-w-sm mx-auto sm:max-w-none">
 
-            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">Bassam muhammad</h4>
-            <p className="text-green-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">Chief Operations Officer</p>
+            <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{t('coo_name')}</h4>
+            <p className="text-green-600 font-medium mb-3 sm:mb-4 text-sm sm:text-base">{t('coo_title')}</p>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
-              Streamlining operations and scaling our healthcare solutions across the region with proven excellence.
+              {t('coo_description')}
             </p>
           </div>
         </div>
