@@ -36,10 +36,30 @@ const nextConfig: NextConfig = {
     return config;
   },
 
-  // Experimental features for better HMR
-  experimental: {
-    // Enable better Fast Refresh
-    esmExternals: 'loose',
+  // Headers for CORS in development
+  async headers() {
+    if (process.env.NODE_ENV === 'development') {
+      return [
+        {
+          source: '/_next/:path*',
+          headers: [
+            {
+              key: 'Access-Control-Allow-Origin',
+              value: '*',
+            },
+            {
+              key: 'Access-Control-Allow-Methods',
+              value: 'GET, POST, PUT, DELETE, OPTIONS',
+            },
+            {
+              key: 'Access-Control-Allow-Headers',
+              value: 'Content-Type, Authorization',
+            },
+          ],
+        },
+      ];
+    }
+    return [];
   },
 };
 
