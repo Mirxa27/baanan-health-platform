@@ -89,7 +89,7 @@ model Rental {
   status      RentalStatus @default(ACTIVE)
   startDate   DateTime
   endDate     DateTime
-  totalAmount Float
+  totalAmount Decimal      @db.Decimal(10, 2)
   paymentId   String?
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
