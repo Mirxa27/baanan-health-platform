@@ -27,6 +27,8 @@ export default function SigninPage() {
     setIsLoading(true);
     setError('');
 
+    console.log('Attempting signin with:', { email: formData.email, hasPassword: !!formData.password });
+
     try {
       const result = await signIn('credentials', {
         email: formData.email,
@@ -34,18 +36,22 @@ export default function SigninPage() {
         redirect: false,
       });
 
+      console.log('NextAuth result:', result);
+
       if (result?.error) {
         console.error('Sign in error:', result.error);
-        setError('Invalid email or password. Please try again.');
+        setError(`Authentication failed: ${result.error}. Please check your credentials.`);
       } else if (result?.ok) {
+        console.log('Sign in successful, redirecting...');
         // Redirect to dashboard on success
         window.location.href = '/halol/dashboard';
       } else {
+        console.log('Unexpected result:', result);
         setError('An unexpected error occurred. Please try again.');
       }
     } catch (error) {
       console.error('Sign in error:', error);
-      setError('Unable to connect to authentication service. Please try again.');
+      setError(`Connection error: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setIsLoading(false);
     }
