@@ -1,0 +1,45 @@
+{
+  "title": "Notifications",
+  "no_notifications": "No notifications",
+  "no_notifications_description": "You're all caught up! Check back later for updates.",
+  "mark_all_read": "Mark all as read",
+  "mark_read": "Mark as read",
+  "clear_all": "Clear all",
+  "view_all": "View all",
+  "close": "Close",
+  
+  "order_notification": "Order Update",
+  "rental_notification": "Rental Update", 
+  "maintenance_notification": "Maintenance Update",
+  "system_notification": "System Update",
+  "payment_notification": "Payment Update",
+  "account_notification": "Account Update",
+  
+  "order_confirmed": "Your order has been confirmed",
+  "order_shipped": "Your order has been shipped",
+  "order_delivered": "Your order has been delivered",
+  "order_cancelled": "Your order has been cancelled",
+  
+  "rental_starting": "Your rental period is starting",
+  "rental_ending": "Your rental period is ending soon",
+  "rental_overdue": "Your rental is overdue",
+  "rental_returned": "Equipment has been returned",
+  
+  "maintenance_scheduled": "Maintenance has been scheduled",
+  "maintenance_completed": "Maintenance has been completed",
+  "maintenance_required": "Equipment requires maintenance",
+  
+  "payment_successful": "Payment was successful",
+  "payment_failed": "Payment failed",
+  "refund_processed": "Refund has been processed",
+  
+  "account_created": "Account created successfully",
+  "password_changed": "Password changed successfully",
+  "profile_updated": "Profile updated successfully",
+  
+  "just_now": "Just now",
+  "minutes_ago": "minutes ago",
+  "hours_ago": "hours ago",
+  "days_ago": "days ago",
+  "weeks_ago": "weeks ago"
+}
