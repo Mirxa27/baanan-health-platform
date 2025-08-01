@@ -7,7 +7,9 @@ import { LanguageSwitcher } from '../app/components/LanguageSwitcher';
 
 export default function Header() {
   const { t } = useTranslation('common');
+  const { data: session, status } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
