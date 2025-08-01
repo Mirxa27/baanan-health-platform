@@ -175,6 +175,36 @@ export default function SigninPage() {
           </div>
         </div>
 
+        {process.env.NODE_ENV === 'development' && (
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+            <h3 className="text-sm font-medium text-yellow-800 mb-2">Development Test Accounts:</h3>
+            <div className="text-xs text-yellow-700 space-y-1">
+              <div>
+                <strong>Admin:</strong> admin@halol.com / admin123
+              </div>
+              <div>
+                <strong>Customer:</strong> customer@example.com / customer123
+              </div>
+              <div className="mt-2">
+                <button
+                  type="button"
+                  onClick={() => setFormData({...formData, email: 'admin@halol.com', password: 'admin123'})}
+                  className="text-xs text-blue-600 hover:text-blue-800 underline mr-4"
+                >
+                  Use Admin
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setFormData({...formData, email: 'customer@example.com', password: 'customer123'})}
+                  className="text-xs text-blue-600 hover:text-blue-800 underline"
+                >
+                  Use Customer
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="text-center">
           <p className="text-xs text-gray-500">
             By signing in, you agree to our{' '}
