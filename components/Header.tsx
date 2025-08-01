@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useSession, signOut } from 'next-auth/react';
 import { useTranslation } from '../hooks/useTranslation';
 import { LanguageSwitcher } from '../app/components/LanguageSwitcher';
 
