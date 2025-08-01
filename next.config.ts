@@ -1,5 +1,4 @@
 import type { NextConfig } from "next";
-import nextTranslate from 'next-translate-plugin';
 
 const nextConfig: NextConfig = {
   // Image optimization settings
@@ -16,4 +15,4 @@ const nextConfig: NextConfig = {
   compress: true,
 };
 
-export default nextTranslate(nextConfig);
+export default nextConfig;
