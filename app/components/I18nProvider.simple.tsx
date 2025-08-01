@@ -20,7 +20,7 @@ interface I18nProviderProps {
 export function I18nProvider({ children, initialLocale }: I18nProviderProps) {
   const [locale, setLocaleState] = useState<Locale>(initialLocale || 'en');
 
-  // Set locale with persistence and page refresh for immediate effect
+  // Set locale with persistence
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale);
     if (typeof window !== 'undefined') {
@@ -36,11 +36,6 @@ export function I18nProvider({ children, initialLocale }: I18nProviderProps) {
         document.body.classList.remove('rtl', 'arabic');
         document.body.style.fontFamily = '';
       }
-
-      // Force re-render by triggering a small delay
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
     }
   };
 
