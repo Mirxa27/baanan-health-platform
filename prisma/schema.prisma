@@ -106,7 +106,7 @@ model RentalItem {
   rentalId String
   deviceId String
   quantity Int
-  dailyRate Float
+  dailyRate Decimal @db.Decimal(10, 2)
 
   // Relations
   rental Rental @relation(fields: [rentalId], references: [id])
