@@ -20,13 +20,27 @@ interface I18nProviderProps {
 export function I18nProvider({ children, initialLocale }: I18nProviderProps) {
   const [locale, setLocaleState] = useState<Locale>(initialLocale || 'en');
 
-  // Set locale with persistence
+  // Set locale with persistence and page refresh for immediate effect
   const setLocale = (newLocale: Locale) => {
     setLocaleState(newLocale);
     if (typeof window !== 'undefined') {
       localStorage.setItem('locale', newLocale);
       document.documentElement.lang = newLocale;
       document.documentElement.dir = newLocale === 'ar' ? 'rtl' : 'ltr';
+
+      // Add body class for Arabic styling
+      if (newLocale === 'ar') {
+        document.body.classList.add('rtl', 'arabic');
+        document.body.style.fontFamily = '"Tajawal", "Arial", sans-serif';
+      } else {
+        document.body.classList.remove('rtl', 'arabic');
+        document.body.style.fontFamily = '';
+      }
+
+      // Force re-render by triggering a small delay
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
     }
   };
 
