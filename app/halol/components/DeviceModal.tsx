@@ -27,6 +27,8 @@ export default function DeviceModal({ device, onClose, onSuccess }: DeviceModalP
   const [activeTab, setActiveTab] = useState<'buy' | 'rent'>('buy');
   const [quantity, setQuantity] = useState(1);
   const [rentalDays, setRentalDays] = useState(1);
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handlePurchase = async () => {
