@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { signIn } from 'next-auth/react';
+import { signIn } from '../../../hooks/useAuth';
 
 export default function SigninPage() {
   const [formData, setFormData] = useState({
