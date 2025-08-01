@@ -76,9 +76,9 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Calculate metrics
-    const totalRevenue = orders.reduce((sum, order) => sum + order.totalAmount, 0) +
-                        rentals.reduce((sum, rental) => sum + rental.totalAmount, 0);
+    // Calculate metrics - convert Decimal to number for calculations
+    const totalRevenue = orders.reduce((sum, order) => sum + Number(order.totalAmount), 0) +
+                        rentals.reduce((sum, rental) => sum + Number(rental.totalAmount), 0);
     
     const totalOrders = orders.length;
     const totalRentals = rentals.filter(r => r.status === 'ACTIVE').length;
@@ -114,8 +114,8 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    const prevRevenue = prevOrders.reduce((sum, order) => sum + order.totalAmount, 0) +
-                       prevRentals.reduce((sum, rental) => sum + rental.totalAmount, 0);
+    const prevRevenue = prevOrders.reduce((sum, order) => sum + Number(order.totalAmount), 0) +
+                       prevRentals.reduce((sum, rental) => sum + Number(rental.totalAmount), 0);
     
     const revenueGrowth = prevRevenue > 0 ? ((totalRevenue - prevRevenue) / prevRevenue) * 100 : 0;
     const orderGrowth = prevOrders.length > 0 ? ((totalOrders - prevOrders.length) / prevOrders.length) * 100 : 0;
@@ -154,8 +154,8 @@ export async function GET(request: NextRequest) {
         },
       });
 
-      const monthRevenue = monthOrders.reduce((sum, order) => sum + order.totalAmount, 0) +
-                          monthRentals.reduce((sum, rental) => sum + rental.totalAmount, 0);
+      const monthRevenue = monthOrders.reduce((sum, order) => sum + Number(order.totalAmount), 0) +
+                          monthRentals.reduce((sum, rental) => sum + Number(rental.totalAmount), 0);
 
       monthlyRevenue.push({
         month: monthStart.toLocaleDateString('en-US', { month: 'short' }),
@@ -174,13 +174,13 @@ export async function GET(request: NextRequest) {
           deviceSales.set(key, {
             name: key,
             sales: existing.sales + item.quantity,
-            revenue: existing.revenue + (item.price * item.quantity),
+            revenue: existing.revenue + (Number(item.price) * item.quantity),
           });
         } else {
           deviceSales.set(key, {
             name: key,
             sales: item.quantity,
-            revenue: item.price * item.quantity,
+            revenue: Number(item.price) * item.quantity,
           });
         }
       });

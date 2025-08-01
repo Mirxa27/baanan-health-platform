@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
+import { useTranslation } from '../../../hooks/useTranslation';
 
 interface Device {
   id: string;
@@ -23,10 +24,13 @@ interface DeviceModalProps {
 }
 
 export default function DeviceModal({ device, onClose, onSuccess }: DeviceModalProps) {
+  const { t } = useTranslation('dashboard');
   const { data: session } = useSession();
   const [activeTab, setActiveTab] = useState<'buy' | 'rent'>('buy');
   const [quantity, setQuantity] = useState(1);
   const [rentalDays, setRentalDays] = useState(1);
+  const [startDate, setStartDate] = useState<Date | null>(null);
+  const [endDate, setEndDate] = useState<Date | null>(null);
   const [loading, setLoading] = useState(false);
 
   const handlePurchase = async () => {
@@ -73,7 +77,9 @@ export default function DeviceModal({ device, onClose, onSuccess }: DeviceModalP
         body: JSON.stringify({
           deviceId: device.id,
           quantity,
-          days: rentalDays,
+          days: calculatedDays,
+          startDate: startDate?.toISOString(),
+          endDate: endDate?.toISOString(),
         }),
       });
 
@@ -91,9 +97,13 @@ export default function DeviceModal({ device, onClose, onSuccess }: DeviceModalP
     }
   };
 
-  const totalPrice = activeTab === 'buy' 
-    ? device.price * quantity 
-    : device.rentPrice * quantity * rentalDays;
+  const calculatedDays = startDate && endDate
+    ? Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))
+    : rentalDays;
+
+  const totalPrice = activeTab === 'buy'
+    ? device.price * quantity
+    : device.rentPrice * quantity * calculatedDays;
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
@@ -226,25 +236,129 @@ export default function DeviceModal({ device, onClose, onSuccess }: DeviceModalP
             </div>
 
             {activeTab === 'rent' && (
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Rental Days
-                </label>
-                <input
-                  type="number"
-                  min="1"
-                  value={rentalDays}
-                  onChange={(e) => setRentalDays(parseInt(e.target.value) || 1)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Start Date
+                    </label>
+                    <input
+                      type="date"
+                      value={startDate ? startDate.toISOString().split('T')[0] : ''}
+                      min={new Date().toISOString().split('T')[0]}
+                      onChange={(e) => {
+                        const date = e.target.value ? new Date(e.target.value) : null;
+                        setStartDate(date);
+                        if (!endDate && date) {
+                          const defaultEnd = new Date(date);
+                          defaultEnd.setDate(date.getDate() + rentalDays - 1);
+                          setEndDate(defaultEnd);
+                        }
+                      }}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      End Date
+                    </label>
+                    <input
+                      type="date"
+                      value={endDate ? endDate.toISOString().split('T')[0] : ''}
+                      min={startDate ? startDate.toISOString().split('T')[0] : new Date().toISOString().split('T')[0]}
+                      onChange={(e) => {
+                        const date = e.target.value ? new Date(e.target.value) : null;
+                        setEndDate(date);
+                      }}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                </div>
+
+                {startDate && endDate && (
+                  <div className="bg-blue-50 p-3 rounded-lg">
+                    <p className="text-sm text-blue-800">
+                      <strong>Rental Duration:</strong> {calculatedDays} day{calculatedDays !== 1 ? 's' : ''}
+                      <br />
+                      <strong>From:</strong> {startDate.toLocaleDateString()}
+                      <br />
+                      <strong>To:</strong> {endDate.toLocaleDateString()}
+                    </p>
+                  </div>
+                )}
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Quick Select (days)
+                  </label>
+                  <div className="grid grid-cols-4 gap-2">
+                    {[1, 3, 7, 14].map(days => (
+                      <button
+                        key={days}
+                        type="button"
+                        onClick={() => {
+                          const start = startDate || new Date();
+                          const end = new Date(start);
+                          end.setDate(start.getDate() + days - 1);
+                          setStartDate(start);
+                          setEndDate(end);
+                          setRentalDays(days);
+                        }}
+                        className="py-2 px-3 border border-gray-300 rounded-md text-sm hover:bg-gray-50"
+                      >
+                        {days} day{days !== 1 ? 's' : ''}
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
 
             <div className="bg-gray-50 p-4 rounded-lg">
-              <div className="flex justify-between items-center">
-                <span className="text-lg font-medium">Total:</span>
-                <span className="text-2xl font-bold text-blue-600">${totalPrice.toFixed(2)}</span>
-              </div>
+              {activeTab === 'buy' ? (
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Unit Price:</span>
+                    <span>${device.price.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Quantity:</span>
+                    <span>{quantity}</span>
+                  </div>
+                  <div className="border-t pt-2 flex justify-between items-center">
+                    <span className="text-lg font-medium">Total:</span>
+                    <span className="text-2xl font-bold text-blue-600">${totalPrice.toFixed(2)}</span>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Daily Rate:</span>
+                    <span>${device.rentPrice.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Quantity:</span>
+                    <span>{quantity}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Duration:</span>
+                    <span>{calculatedDays} day{calculatedDays !== 1 ? 's' : ''}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Subtotal:</span>
+                    <span>${(device.rentPrice * quantity * calculatedDays).toFixed(2)}</span>
+                  </div>
+                  <div className="border-t pt-2 flex justify-between items-center">
+                    <span className="text-lg font-medium">Total:</span>
+                    <span className="text-2xl font-bold text-blue-600">${totalPrice.toFixed(2)}</span>
+                  </div>
+                  {startDate && endDate && (
+                    <div className="text-xs text-gray-500 mt-2">
+                      Rental period: {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="flex space-x-4">

@@ -1,22 +1,21 @@
 'use client';
 
 import React from 'react';
-import useTranslation from '../../hooks/useTranslation';
-import { useRouter } from 'next/navigation';
+import { useTranslation } from '../../hooks/useTranslation';
+import { useRouter, usePathname } from 'next/navigation';
 
 interface LanguageSwitcherProps {
   className?: string;
 }
 
 export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
-  const { t, locale, setLocale } = useTranslation('common');
+  const { locale, setLocale } = useTranslation('common');
   const router = useRouter();
+  const pathname = usePathname();
 
   const toggleLanguage = () => {
     const newLocale = locale === 'en' ? 'ar' : 'en';
     setLocale(newLocale);
-    // Refresh the page to apply the language change
-    router.refresh();
   };
 
   return (
@@ -34,8 +33,9 @@ export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
 }
 
 export function LanguageDropdown({ className = '' }: LanguageSwitcherProps) {
-  const { t, locale, setLocale } = useTranslation('common');
+  const { locale, setLocale } = useTranslation('common');
   const router = useRouter();
+  const pathname = usePathname();
 
   const languages = [
     { code: 'en', name: 'English', nativeName: 'English' },
@@ -44,8 +44,6 @@ export function LanguageDropdown({ className = '' }: LanguageSwitcherProps) {
 
   const handleLanguageChange = (newLocale: string) => {
     setLocale(newLocale as 'en' | 'ar');
-    // Refresh the page to apply the language change
-    router.refresh();
   };
 
   return (

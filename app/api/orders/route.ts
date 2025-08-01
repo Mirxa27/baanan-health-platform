@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const totalAmount = device.price * validatedData.quantity;
+    const totalAmount = Number(device.price) * validatedData.quantity;
 
     // Create Stripe checkout session
     const stripeSession = await stripe.checkout.sessions.create({
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
               name: device.name,
               description: `${device.brand} - ${device.model}`,
             },
-            unit_amount: Math.round(device.price * 100),
+            unit_amount: Math.round(Number(device.price) * 100),
           },
           quantity: validatedData.quantity,
         },

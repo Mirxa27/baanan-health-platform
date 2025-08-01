@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export default function ContactPage() {
   const { t } = useTranslation('contact');

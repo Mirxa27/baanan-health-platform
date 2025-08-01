@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -37,8 +37,8 @@ model Device {
   category    String
   brand       String
   model       String
-  price       Float
-  rentPrice   Float      // Daily rent price
+  price       Decimal    @db.Decimal(10, 2)
+  rentPrice   Decimal    @db.Decimal(10, 2) // Daily rent price
   imageUrl    String?
   isAvailable Boolean    @default(true)
   stock       Int        @default(0)
@@ -57,13 +57,13 @@ model Order {
   id          String      @id @default(cuid())
   userId      String
   status      OrderStatus @default(PENDING)
-  totalAmount Float
+  totalAmount Decimal     @db.Decimal(10, 2)
   paymentId   String?
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 
   // Relations
-  user       User        @relation(fields: [userId], references: [id])
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   orderItems OrderItem[]
 
   @@map("orders")
@@ -74,10 +74,10 @@ model OrderItem {
   orderId  String
   deviceId String
   quantity Int
-  price    Float
+  price    Decimal @db.Decimal(10, 2)
 
   // Relations
-  order  Order  @relation(fields: [orderId], references: [id])
+  order  Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
   device Device @relation(fields: [deviceId], references: [id])
 
   @@map("order_items")
@@ -89,7 +89,7 @@ model Rental {
   status      RentalStatus @default(ACTIVE)
   startDate   DateTime
   endDate     DateTime
-  totalAmount Float
+  totalAmount Decimal      @db.Decimal(10, 2)
   paymentId   String?
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
@@ -106,7 +106,7 @@ model RentalItem {
   rentalId String
   deviceId String
   quantity Int
-  dailyRate Float
+  dailyRate Decimal @db.Decimal(10, 2)
 
   // Relations
   rental Rental @relation(fields: [rentalId], references: [id])
@@ -123,7 +123,7 @@ model MaintenanceRequest {
   status      MaintenanceStatus @default(PENDING)
   scheduledAt DateTime?
   completedAt DateTime?
-  cost        Float?
+  cost        Decimal?  @db.Decimal(10, 2)
   notes       String?
   createdAt   DateTime          @default(now())
   updatedAt   DateTime          @updatedAt

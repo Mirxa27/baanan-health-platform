@@ -1,8 +1,7 @@
-
 'use client';
 import React from 'react';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export default function HeroSection() {
   const { t } = useTranslation('common');
