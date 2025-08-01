@@ -12,6 +12,8 @@ export default function SignupPage() {
     organizationType: 'hospital',
     agreeToTerms: false
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
