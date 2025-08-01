@@ -22,10 +22,10 @@ export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
     <button
       onClick={toggleLanguage}
       className={`flex items-center space-x-2 px-3 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors ${className}`}
-      aria-label={`Switch to ${lang === 'en' ? 'Arabic' : 'English'}`}
+      aria-label={`Switch to ${locale === 'en' ? 'Arabic' : 'English'}`}
     >
       <span className="text-sm font-medium">
-        {lang === 'en' ? 'العربية' : 'English'}
+        {locale === 'en' ? 'العربية' : 'English'}
       </span>
       <i className="ri-translate-2 text-lg"></i>
     </button>
