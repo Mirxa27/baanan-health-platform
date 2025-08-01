@@ -1,5 +1,5 @@
 'use client';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation';
 import Link from 'next/link';
 
 export default function HalolShowcase() {
