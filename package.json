@@ -4,7 +4,13 @@
   "description": "Comprehensive medical device management platform for healthcare facilities",
   "private": true,
   "author": "Baanan Healthcare Solutions",
-  "keywords": ["healthcare", "medical-devices", "management", "nextjs", "typescript"],
+  "keywords": [
+    "healthcare",
+    "medical-devices",
+    "management",
+    "nextjs",
+    "typescript"
+  ],
   "scripts": {
     "validate:business": "node scripts/validate-business-logic.js",
     "fix:translations": "node scripts/fix-translation-errors.js",
@@ -32,8 +38,6 @@
     "jose": "^5.9.6",
     "next": "15.3.2",
     "next-auth": "^4.24.10",
-    "next-translate": "^2.6.2",
-    "next-translate-plugin": "^2.6.2",
     "prisma": "^6.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

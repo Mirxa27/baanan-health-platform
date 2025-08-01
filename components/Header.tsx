@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from '../hooks/useTranslation';
 import { LanguageSwitcher } from '../app/components/LanguageSwitcher';
 
 export default function Header() {
