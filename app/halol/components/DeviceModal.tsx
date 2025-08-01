@@ -313,10 +313,50 @@ export default function DeviceModal({ device, onClose, onSuccess }: DeviceModalP
             )}
 
             <div className="bg-gray-50 p-4 rounded-lg">
-              <div className="flex justify-between items-center">
-                <span className="text-lg font-medium">Total:</span>
-                <span className="text-2xl font-bold text-blue-600">${totalPrice.toFixed(2)}</span>
-              </div>
+              {activeTab === 'buy' ? (
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Unit Price:</span>
+                    <span>${device.price.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Quantity:</span>
+                    <span>{quantity}</span>
+                  </div>
+                  <div className="border-t pt-2 flex justify-between items-center">
+                    <span className="text-lg font-medium">Total:</span>
+                    <span className="text-2xl font-bold text-blue-600">${totalPrice.toFixed(2)}</span>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Daily Rate:</span>
+                    <span>${device.rentPrice.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Quantity:</span>
+                    <span>{quantity}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Duration:</span>
+                    <span>{calculatedDays} day{calculatedDays !== 1 ? 's' : ''}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-gray-600">
+                    <span>Subtotal:</span>
+                    <span>${(device.rentPrice * quantity * calculatedDays).toFixed(2)}</span>
+                  </div>
+                  <div className="border-t pt-2 flex justify-between items-center">
+                    <span className="text-lg font-medium">Total:</span>
+                    <span className="text-2xl font-bold text-blue-600">${totalPrice.toFixed(2)}</span>
+                  </div>
+                  {startDate && endDate && (
+                    <div className="text-xs text-gray-500 mt-2">
+                      Rental period: {startDate.toLocaleDateString()} - {endDate.toLocaleDateString()}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
             <div className="flex space-x-4">
