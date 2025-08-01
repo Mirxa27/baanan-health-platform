@@ -1,13 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
+  // Image optimization settings
   images: {
     unoptimized: true,
   },
+  
+  // TypeScript configuration
   typescript: {
-    // ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
+  
+  // Asset optimization
+  compress: true,
 };
 
 export default nextConfig;

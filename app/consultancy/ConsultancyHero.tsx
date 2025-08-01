@@ -1,9 +1,12 @@
 
 'use client';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export default function ConsultancyHero() {
+  const { t } = useTranslation('consultancy');
+
   return (
-    <section 
+    <section
       className="relative py-16 sm:py-20 lg:py-32 overflow-hidden"
       style={{
         backgroundImage: `linear-gradient(rgba(37, 99, 235, 0.1), rgba(147, 51, 234, 0.1)), url('https://readdy.ai/api/search-image?query=healthcare%20consulting%20professionals%20in%20modern%20office%20environment%2C%20medical%20consultation%20meeting%2C%20professional%20healthcare%20advisors%2C%20clean%20business%20setting%20with%20medical%20technology%20displays%2C%20collaborative%20healthcare%20planning&width=1920&height=800&seq=consultancy-hero&orientation=landscape')`,
@@ -16,17 +19,17 @@ export default function ConsultancyHero() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center">
           <span className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-blue-100 text-blue-600 rounded-full text-xs sm:text-sm font-medium mb-6 sm:mb-8">
-            🏥 Professional Healthcare Consulting
+            {t('professional_healthcare_consulting')}
           </span>
           
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight px-2">
-            Expert Healthcare
+            {t('expert_healthcare_consulting_title_part1')}
             <br className="hidden sm:block" />
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Consulting Services</span>
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> {t('expert_healthcare_consulting_title_part2')}</span>
           </h1>
           
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-8 sm:mb-12 leading-relaxed max-w-4xl mx-auto px-4">
-            Transform your healthcare organization with our expert consulting services. We provide strategic guidance, technology integration, and operational excellence to enhance patient care and drive business growth.
+            {t('expert_healthcare_consulting_description')}
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16">
@@ -35,7 +38,7 @@ export default function ConsultancyHero() {
                 <i className="ri-user-star-line text-xl sm:text-2xl text-blue-600"></i>
               </div>
               <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">200+</h3>
-              <p className="text-sm sm:text-base text-gray-600">Healthcare Clients</p>
+              <p className="text-sm sm:text-base text-gray-600">{t('healthcare_clients')}</p>
             </div>
             
             <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center">
@@ -43,7 +46,7 @@ export default function ConsultancyHero() {
                 <i className="ri-award-line text-xl sm:text-2xl text-purple-600"></i>
               </div>
               <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">15+</h3>
-              <p className="text-sm sm:text-base text-gray-600">Years Experience</p>
+              <p className="text-sm sm:text-base text-gray-600">{t('years_experience')}</p>
             </div>
             
             <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center sm:col-span-2 lg:col-span-1">
@@ -51,7 +54,7 @@ export default function ConsultancyHero() {
                 <i className="ri-line-chart-line text-xl sm:text-2xl text-green-600"></i>
               </div>
               <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2">98%</h3>
-              <p className="text-sm sm:text-base text-gray-600">Success Rate</p>
+              <p className="text-sm sm:text-base text-gray-600">{t('success_rate')}</p>
             </div>
           </div>
         </div>

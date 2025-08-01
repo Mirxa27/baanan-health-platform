@@ -39,12 +39,13 @@ export default function Footer() {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-6">Services</h4>
+              <h4 className="text-lg font-semibold mb-6">Halol Platform</h4>
               <ul className="space-y-3">
-                <li><Link href="/halol" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Halol App</Link></li>
-                <li><Link href="/products" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Smart Devices</Link></li>
-                <li><Link href="/products" className="text-gray-300 hover:text-white transition-colors cursor-pointer">AI Analytics</Link></li>
-                <li><Link href="/consultancy" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Healthcare Solutions</Link></li>
+                <li><Link href="/halol/dashboard" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Device Catalog</Link></li>
+                <li><Link href="/halol/dashboard?tab=orders" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Purchase Devices</Link></li>
+                <li><Link href="/halol/dashboard?tab=rentals" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Rent Equipment</Link></li>
+                <li><Link href="/halol/dashboard?tab=maintenance" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Maintenance</Link></li>
+                <li><Link href="/halol/dashboard?tab=support" className="text-gray-300 hover:text-white transition-colors cursor-pointer">Customer Support</Link></li>
               </ul>
             </div>
 

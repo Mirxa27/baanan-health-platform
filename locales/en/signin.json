@@ -1,0 +1,12 @@
+{
+  "title": "Sign In",
+  "description": "Access your Halol account",
+  "email_address": "Email Address",
+  "password": "Password",
+  "sign_in_button": "Sign In",
+  "signing_in": "Signing in...",
+  "no_account": "Don't have an account?",
+  "sign_up_link": "Sign up",
+  "invalid_credentials": "Invalid email or password",
+  "error_occurred": "An error occurred. Please try again."
+}

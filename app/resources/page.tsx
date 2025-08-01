@@ -6,8 +6,11 @@ import BlogArticles from './BlogArticles';
 import ResearchPapers from './ResearchPapers';
 import NewsUpdates from './NewsUpdates';
 import ResourcesCTA from './ResourcesCTA';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function ResourcesPage() {
+  const { t } = useTranslation('resources'); // Assuming 'resources' namespace for this page
+
   return (
     <>
       <Header />

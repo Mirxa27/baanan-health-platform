@@ -1,22 +1,50 @@
 {
-  "name": "next-app",
-  "version": "0.1.0",
+  "name": "baanan-halol-platform",
+  "version": "1.0.0",
+  "description": "Comprehensive medical device management platform for healthcare facilities",
   "private": true,
+  "author": "Baanan Healthcare Solutions",
+  "keywords": ["healthcare", "medical-devices", "management", "nextjs", "typescript"],
   "scripts": {
+    "validate:business": "node scripts/validate-business-logic.js",
+    "fix:translations": "node scripts/fix-translation-errors.js",
     "dev": "cross-env NODE_ENV=development next dev -H 0.0.0.0 -p 3000",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "rm -rf .next out",
+    "analyze": "cross-env ANALYZE=true next build",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "tsx prisma/seed.ts",
+    "setup": "node scripts/setup.js",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@prisma/client": "^6.2.0",
     "@react-google-maps/api": "^2.19.3",
+    "@stripe/stripe-js": "^4.10.0",
+    "bcryptjs": "^2.4.3",
+    "jose": "^5.9.6",
     "next": "15.3.2",
+    "next-auth": "^4.24.10",
+    "next-translate": "^2.6.2",
+    "next-translate-plugin": "^2.6.2",
+    "prisma": "^6.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "recharts": "^3.0.2"
+    "recharts": "^3.0.2",
+    "stripe": "^17.5.0",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
     "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^19.1.9",
     "@types/react-dom": "^19.1.7",
@@ -25,6 +53,7 @@
     "eslint": "^9.32.0",
     "postcss": "^8.5.5",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
     "typescript": "^5"
   }
 }

@@ -6,8 +6,11 @@ import VisionMission from './VisionMission';
 import Leadership from './Leadership';
 import Achievements from './Achievements';
 import Values from './Values';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function AboutPage() {
+  const { t } = useTranslation('about'); // Assuming 'about' namespace for the about page
+
   return (
     <>
       <Header />

@@ -1,0 +1,219 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      UserRole @default(CUSTOMER)
+  phone     String?
+  address   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  orders           Order[]
+  rentals          Rental[]
+  maintenanceRequests MaintenanceRequest[]
+  customerServiceChats CustomerServiceChat[]
+
+  @@map("users")
+}
+
+model Device {
+  id          String     @id @default(cuid())
+  name        String
+  description String?
+  category    String
+  brand       String
+  model       String
+  price       Float
+  rentPrice   Float      // Daily rent price
+  imageUrl    String?
+  isAvailable Boolean    @default(true)
+  stock       Int        @default(0)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  orderItems      OrderItem[]
+  rentalItems     RentalItem[]
+  maintenanceRequests MaintenanceRequest[]
+
+  @@map("devices")
+}
+
+model Order {
+  id          String      @id @default(cuid())
+  userId      String
+  status      OrderStatus @default(PENDING)
+  totalAmount Float
+  paymentId   String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  // Relations
+  user       User        @relation(fields: [userId], references: [id])
+  orderItems OrderItem[]
+
+  @@map("orders")
+}
+
+model OrderItem {
+  id       String @id @default(cuid())
+  orderId  String
+  deviceId String
+  quantity Int
+  price    Float
+
+  // Relations
+  order  Order  @relation(fields: [orderId], references: [id])
+  device Device @relation(fields: [deviceId], references: [id])
+
+  @@map("order_items")
+}
+
+model Rental {
+  id          String       @id @default(cuid())
+  userId      String
+  status      RentalStatus @default(ACTIVE)
+  startDate   DateTime
+  endDate     DateTime
+  totalAmount Float
+  paymentId   String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  // Relations
+  user        User         @relation(fields: [userId], references: [id])
+  rentalItems RentalItem[]
+
+  @@map("rentals")
+}
+
+model RentalItem {
+  id       String @id @default(cuid())
+  rentalId String
+  deviceId String
+  quantity Int
+  dailyRate Float
+
+  // Relations
+  rental Rental @relation(fields: [rentalId], references: [id])
+  device Device @relation(fields: [deviceId], references: [id])
+
+  @@map("rental_items")
+}
+
+model MaintenanceRequest {
+  id          String            @id @default(cuid())
+  userId      String
+  deviceId    String
+  description String
+  status      MaintenanceStatus @default(PENDING)
+  scheduledAt DateTime?
+  completedAt DateTime?
+  cost        Float?
+  notes       String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  // Relations
+  user   User   @relation(fields: [userId], references: [id])
+  device Device @relation(fields: [deviceId], references: [id])
+
+  @@map("maintenance_requests")
+}
+
+model CustomerServiceAgent {
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  type      AgentType @default(HUMAN)
+  isActive  Boolean   @default(true)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Relations
+  chats CustomerServiceChat[]
+
+  @@map("customer_service_agents")
+}
+
+model CustomerServiceChat {
+  id        String   @id @default(cuid())
+  userId    String
+  agentId   String?
+  subject   String
+  status    ChatStatus @default(OPEN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  user     User                    @relation(fields: [userId], references: [id])
+  agent    CustomerServiceAgent?   @relation(fields: [agentId], references: [id])
+  messages CustomerServiceMessage[]
+
+  @@map("customer_service_chats")
+}
+
+model CustomerServiceMessage {
+  id        String   @id @default(cuid())
+  chatId    String
+  content   String
+  isFromUser Boolean
+  createdAt DateTime @default(now())
+
+  // Relations
+  chat CustomerServiceChat @relation(fields: [chatId], references: [id])
+
+  @@map("customer_service_messages")
+}
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum RentalStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+enum MaintenanceStatus {
+  PENDING
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum AgentType {
+  HUMAN
+  AI
+}
+
+enum ChatStatus {
+  OPEN
+  CLOSED
+  RESOLVED
+}

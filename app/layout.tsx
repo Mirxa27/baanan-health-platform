@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Pacifico } from "next/font/google";
 import "./globals.css";
+import Providers from './components/Providers';
 
 const pacifico = Pacifico({
   weight: '400',
@@ -21,8 +22,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Baanan - Healthcare Technology Innovation",
-  description: "Baanan is Saudi Arabia's premier health-tech company, seamlessly blending innovative technology with holistic wellness solutions.",
+  title: "Baanan - Medical Device Solutions",
+  description: "Professional medical device management with Halol app",
 };
 
 export default function RootLayout({
@@ -41,7 +42,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

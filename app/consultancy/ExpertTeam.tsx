@@ -1,7 +1,10 @@
 
 'use client';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export default function ExpertTeam() {
+  const { t } = useTranslation('consultancy'); // Assuming 'consultancy' namespace for this component
+
   const experts = [
     {
       name: 'Dr. Sarah Al-Mahmoud',
@@ -58,23 +61,23 @@ export default function ExpertTeam() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-            Our Expert
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Team</span>
+            {t('our_expert_team_part1')}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> {t('our_expert_team_part2')}</span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Meet our team of certified healthcare technology experts with decades of combined experience in transforming healthcare organizations.
+            {t('expert_team_description')}
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {experts.map((expert, index) => (
-            <div 
+            <div
               key={index}
               className="group bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
             >
               <div className="text-center">
                 <div className="relative mb-4 sm:mb-6">
-                  <img 
+                  <img
                     src={expert.image}
                     alt={expert.name}
                     className="w-24 sm:w-32 h-32 sm:h-40 object-cover object-top rounded-xl mx-auto shadow-lg"
@@ -97,10 +100,10 @@ export default function ExpertTeam() {
                 </p>
                 
                 <div className="space-y-2 sm:space-y-3">
-                  <h4 className="text-sm font-semibold text-gray-900">Certifications:</h4>
+                  <h4 className="text-sm font-semibold text-gray-900">{t('certifications')}</h4>
                   <div className="flex flex-wrap gap-1 sm:gap-2 justify-center">
                     {expert.certifications.map((cert, certIndex) => (
-                      <span 
+                      <span
                         key={certIndex}
                         className="px-2 sm:px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-medium"
                       >
@@ -126,7 +129,7 @@ export default function ExpertTeam() {
           ))}
         </div>
 
-        <div 
+        <div
           className="relative rounded-2xl sm:rounded-3xl p-8 sm:p-12 lg:p-16 text-center text-white overflow-hidden mt-16 sm:mt-20"
           style={{
             backgroundImage: `linear-gradient(rgba(37, 99, 235, 0.9), rgba(147, 51, 234, 0.9)), url('https://readdy.ai/api/search-image?query=healthcare%20consulting%20team%20collaboration%2C%20medical%20professionals%20working%20together%2C%20diverse%20healthcare%20experts%2C%20modern%20office%20environment%2C%20teamwork%20in%20healthcare%20consulting&width=1200&height=400&seq=team-cta&orientation=landscape')`,
@@ -136,17 +139,17 @@ export default function ExpertTeam() {
         >
           <div className="relative z-10">
             <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6">
-              Work with Industry-Leading Experts
+              {t('work_with_industry_leading_experts')}
             </h3>
             <p className="text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 opacity-90 max-w-2xl mx-auto px-4">
-              Our certified consultants bring decades of experience and proven methodologies to transform your healthcare organization.
+              {t('work_with_experts_description')}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
               <button className="bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-gray-100 transition-all transform hover:scale-105 cursor-pointer whitespace-nowrap">
-                Schedule Consultation
+                {t('schedule_consultation')}
               </button>
               <button className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white hover:text-blue-600 transition-all transform hover:scale-105 cursor-pointer whitespace-nowrap">
-                View Team Profiles
+                {t('view_team_profiles')}
               </button>
             </div>
           </div>
