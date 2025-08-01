@@ -76,9 +76,9 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Calculate metrics
-    const totalRevenue = orders.reduce((sum, order) => sum + order.totalAmount, 0) +
-                        rentals.reduce((sum, rental) => sum + rental.totalAmount, 0);
+    // Calculate metrics - convert Decimal to number for calculations
+    const totalRevenue = orders.reduce((sum, order) => sum + Number(order.totalAmount), 0) +
+                        rentals.reduce((sum, rental) => sum + Number(rental.totalAmount), 0);
     
     const totalOrders = orders.length;
     const totalRentals = rentals.filter(r => r.status === 'ACTIVE').length;
