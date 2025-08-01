@@ -180,7 +180,7 @@ export async function GET(request: NextRequest) {
           deviceSales.set(key, {
             name: key,
             sales: item.quantity,
-            revenue: item.price * item.quantity,
+            revenue: Number(item.price) * item.quantity,
           });
         }
       });
