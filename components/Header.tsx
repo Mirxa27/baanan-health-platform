@@ -168,14 +168,59 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
-              <Link
-                href="/halol"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium text-center mt-4 cursor-pointer whitespace-nowrap"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {t('halol_platform')}
-              </Link>
-              
+
+              {/* Mobile Authentication Section */}
+              {session ? (
+                <div className="mt-4 pt-4 border-t border-gray-100">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                      <span className="text-white font-semibold">
+                        {session.user?.name?.charAt(0).toUpperCase() || 'U'}
+                      </span>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-900">{session.user?.name}</p>
+                      <p className="text-sm text-gray-500">{session.user?.role}</p>
+                    </div>
+                  </div>
+                  <Link
+                    href="/halol/dashboard"
+                    className="block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium text-center mb-3 cursor-pointer"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <i className="ri-dashboard-line mr-2"></i>
+                    {t('dashboard')}
+                  </Link>
+                  <button
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      signOut({ callbackUrl: '/' });
+                    }}
+                    className="block w-full text-center px-6 py-2 border border-red-300 text-red-700 rounded-full font-medium hover:bg-red-50 transition-colors"
+                  >
+                    <i className="ri-logout-box-line mr-2"></i>
+                    {t('sign_out')}
+                  </button>
+                </div>
+              ) : (
+                <div className="mt-4 pt-4 border-t border-gray-100 space-y-3">
+                  <Link
+                    href="/halol/auth/signin"
+                    className="block text-center px-6 py-2 border border-blue-600 text-blue-600 rounded-full font-medium hover:bg-blue-50 transition-colors cursor-pointer"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t('sign_in')}
+                  </Link>
+                  <Link
+                    href="/halol/auth/signup"
+                    className="block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium text-center cursor-pointer"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {t('sign_up')}
+                  </Link>
+                </div>
+              )}
+
               <div className="mt-4 pt-4 border-t border-gray-100">
                 <LanguageSwitcher />
               </div>
