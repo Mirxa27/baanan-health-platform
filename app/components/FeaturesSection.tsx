@@ -1,7 +1,6 @@
-
 'use client';
 import Link from 'next/link';
-import { useTranslation } from '../../hooks/useTranslation';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function FeaturesSection() {
   const { t } = useTranslation('common');
