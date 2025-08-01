@@ -1,0 +1,45 @@
+{
+  "title": "الإشعارات",
+  "no_notifications": "لا توجد إشعارات",
+  "no_notifications_description": "أنت محدث! تحقق مرة أخرى لاحقاً للحصول على التحديثات.",
+  "mark_all_read": "تحديد الكل كمقروء",
+  "mark_read": "تحديد كمقروء",
+  "clear_all": "مسح الكل",
+  "view_all": "عرض الكل",
+  "close": "إغلاق",
+  
+  "order_notification": "تحديث الطلب",
+  "rental_notification": "تحديث الإيجار",
+  "maintenance_notification": "تحديث الصيانة",
+  "system_notification": "تحديث النظام",
+  "payment_notification": "تحديث الدفع",
+  "account_notification": "تحديث الحساب",
+  
+  "order_confirmed": "تم تأكيد طلبك",
+  "order_shipped": "تم شحن طلبك",
+  "order_delivered": "تم تسليم طلبك",
+  "order_cancelled": "تم إلغاء طلبك",
+  
+  "rental_starting": "فترة الإيجار الخاصة بك تبدأ",
+  "rental_ending": "فترة الإيجار الخاصة بك تنتهي قريباً",
+  "rental_overdue": "الإيجار الخاص بك متأخر",
+  "rental_returned": "تم إرجاع المعدات",
+  
+  "maintenance_scheduled": "تم جدولة الصيانة",
+  "maintenance_completed": "تم إكمال الصيانة",
+  "maintenance_required": "المعدات تتطلب صيانة",
+  
+  "payment_successful": "تم الدفع بنجاح",
+  "payment_failed": "فشل في الدفع",
+  "refund_processed": "تم معالجة الاسترداد",
+  
+  "account_created": "تم إنشاء الحساب بنجاح",
+  "password_changed": "تم تغيير كلمة المرور بنجاح",
+  "profile_updated": "تم تحديث الملف الشخصي بنجاح",
+  
+  "just_now": "الآن",
+  "minutes_ago": "منذ دقائق",
+  "hours_ago": "منذ ساعات", 
+  "days_ago": "منذ أيام",
+  "weeks_ago": "منذ أسابيع"
+}
