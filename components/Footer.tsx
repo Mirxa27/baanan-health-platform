@@ -1,7 +1,9 @@
 'use client';
 import Link from 'next/link';
+import { useTranslation } from '../hooks/useTranslation';
 
 export default function Footer() {
+  const { t } = useTranslation('common');
   return (
     <>
       {/* Desktop Footer */}
