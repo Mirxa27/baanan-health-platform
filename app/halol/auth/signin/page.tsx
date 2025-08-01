@@ -51,7 +51,19 @@ export default function SigninPage() {
       }
     } catch (error) {
       console.error('Sign in error:', error);
-      setError(`Connection error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+
+      // Handle specific JSON parsing errors
+      if (error instanceof Error) {
+        if (error.message.includes('Unexpected end of JSON input')) {
+          setError('Authentication service returned invalid response. Please try again.');
+        } else if (error.message.includes('Failed to fetch')) {
+          setError('Network connection error. Please check your connection and try again.');
+        } else {
+          setError(`Connection error: ${error.message}`);
+        }
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+      }
     } finally {
       setIsLoading(false);
     }
