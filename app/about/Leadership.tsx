@@ -1,6 +1,8 @@
 'use client';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function Leadership() {
+  const { t } = useTranslation('about');
   return (
     <section className="py-16 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
