@@ -98,5 +98,12 @@
   "privacy_policy": "Privacy Policy",
   "terms_of_service": "Terms of Service",
   "consultancy": "Consultancy",
-  "resources": "Resources"
+  "resources": "Resources",
+  "sign_in": "Sign In",
+  "sign_up": "Sign Up",
+  "sign_out": "Sign Out",
+  "dashboard": "Dashboard",
+  "my_orders": "My Orders",
+  "profile": "Profile",
+  "settings": "Settings"
 }
