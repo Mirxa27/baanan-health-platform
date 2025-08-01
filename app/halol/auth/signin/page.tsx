@@ -87,10 +87,10 @@ export default function SigninPage() {
             <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mr-3">
               <i className="ri-hospital-line text-white text-xl"></i>
             </div>
-            Halol Platform
+            {t('platform_name')}
           </Link>
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
-          <p className="text-gray-600">Sign in to your Halol account</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">{t('page_title')}</h2>
+          <p className="text-gray-600">{t('description')}</p>
         </div>
 
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
