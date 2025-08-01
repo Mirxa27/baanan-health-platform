@@ -12,6 +12,15 @@ export default function SigninPage() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const message = searchParams.get('message');
+    if (message) {
+      setSuccessMessage(message);
+    }
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
