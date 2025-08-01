@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const totalAmount = device.price * validatedData.quantity;
+    const totalAmount = Number(device.price) * validatedData.quantity;
 
     // Create Stripe checkout session
     const stripeSession = await stripe.checkout.sessions.create({
