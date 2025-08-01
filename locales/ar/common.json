@@ -22,7 +22,7 @@
   "smart_medical_equipment": "المعدات الطبية الذكية",
   "smart_medical_equipment_description": "أجهزة مراقبة متقدمة مع تتبع صحي في الوقت الفعلي ورؤى مدعومة بالذكاء الاصطناعي لنتائج أفضل للمرضى.",
   "posture_correctors": "مصححات الوضعية",
-  "posture_correctors_description": "أجهزة قابلة للارتداء مبتكرة تساعد في الحف��ظ على الوضعية الصحيحة ومنع اضطرابات العضلات والعظام.",
+  "posture_correctors_description": "أجهزة قابلة للارتداء مبتكرة تساعد في الحفاظ على الوضعية الصحيحة ومنع اضطرابات العضلات والعظام.",
   "robotic_physiotherapy": "العلاج الطبيعي الروبوتي",
   "robotic_physiotherapy_description": "أنظمة إعادة تأهيل آلية توفر علاجات دقيقة ومتسقة.",
   "wearable_health_monitors": "أجهزة مراقبة صحية قابلة للارتداء",
@@ -71,10 +71,17 @@
   "consistently_exceeding_expectations": "تجاوز التوقعات باستمرار",
   "ready_to_transform_title_part1": "مستعد لتحويل",
   "ready_to_transform_title_part2": "رعايتك الصحية؟",
-  "ready_to_transform_description": "انضم إلى آلاف المهنيين الصحيين الذين يثقون في بنان للحلول الطبية المبتكرة. ابدأ رحلتك نحو رعاية أفضل للمرضى الي��م.",
+  "ready_to_transform_description": "انضم إلى آلاف المهنيين الصحيين الذين يثقون في بنان للحلول الطبية المبتكرة. ابدأ رحلتك نحو رعاية أفضل للمرضى اليوم.",
   "contact_our_team": "تواصل مع فريقنا",
   "get_consultation": "احصل على استشارة",
   "email_us": "راسلنا",
   "leadership": "القيادة",
-  "ceo_name": "د. أحمد المنصوري، الرئيس التنفيذي"
+  "ceo_name": "د. أحمد المنصوري، الرئيس التنفيذي",
+  "home": "الرئيسية",
+  "about_us_title": "من نحن",
+  "products_title": "المنتجات",
+  "halol_platform": "منصة حلول",
+  "professional_healthcare_consulting": "الاستشارات",
+  "healthcare_knowledge_hub": "الموارد",
+  "contact_title": "تواصل معنا"
 }
