@@ -9,7 +9,7 @@ import AppFeatures from './AppFeatures';
 import AppInterface from './AppInterface';
 import DownloadSection from './DownloadSection';
 import UserTestimonials from './UserTestimonials';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function HalolPage() {
   const { data: session, status } = useSession();
