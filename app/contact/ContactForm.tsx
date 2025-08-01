@@ -1,19 +1,20 @@
 'use client';
 import { useState } from 'react';
+import { useToast } from '../../components/Toast';
 
 export default function ContactForm() {
+  const { showToast, ToastContainer } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    organization: '',
+    company: '',
     subject: '',
     message: '',
-    interest: 'general'
+    preferredContact: 'email'
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -25,56 +26,45 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Form validation
-    if (!formData.name || !formData.email || !formData.message) {
-      setSubmitStatus('Please fill in all required fields.');
-      setIsSubmitting(false);
-      return;
-    }
-
-    if (formData.message.length > 500) {
-      setSubmitStatus('Message must be 500 characters or less.');
-      setIsSubmitting(false);
-      return;
-    }
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
-        body: new URLSearchParams({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone || 'Not provided',
-          organization: formData.organization || 'Not provided',
-          subject: formData.subject || 'General Inquiry',
-          message: formData.message,
-          interest: formData.interest,
-          timestamp: new Date().toISOString()
-        })
+        body: JSON.stringify(formData)
       });
 
+      const result = await response.json();
+
       if (response.ok) {
-        setSubmitStatus('Thank you! Your message has been sent successfully. We will contact you soon.');
+        showToast({
+          message: result.message,
+          type: 'success'
+        });
         setFormData({
           name: '',
           email: '',
           phone: '',
-          organization: '',
+          company: '',
           subject: '',
           message: '',
-          interest: 'general'
+          preferredContact: 'email'
         });
       } else {
-        throw new Error('Failed to send message');
+        showToast({
+          message: result.message || 'Failed to send message. Please try again.',
+          type: 'error'
+        });
       }
     } catch (error) {
-      setSubmitStatus('Sorry, there was an error sending your message. Please try again or contact us directly.');
+      showToast({
+        message: 'Network error. Please check your connection and try again.',
+        type: 'error'
+      });
     }
-    
+
     setIsSubmitting(false);
   };
 
@@ -138,39 +128,36 @@ export default function ContactForm() {
               </div>
               
               <div>
-                <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-2">
-                  Organization
+                <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                  Company
                 </label>
                 <input
                   type="text"
-                  id="organization"
-                  name="organization"
-                  value={formData.organization}
+                  id="company"
+                  name="company"
+                  value={formData.company}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors"
-                  placeholder="Your organization name"
+                  placeholder="Your company name"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="interest" className="block text-sm font-medium text-gray-700 mb-2">
-                Area of Interest
+              <label htmlFor="preferredContact" className="block text-sm font-medium text-gray-700 mb-2">
+                Preferred Contact Method
               </label>
               <div className="relative">
                 <select
-                  id="interest"
-                  name="interest"
-                  value={formData.interest}
+                  id="preferredContact"
+                  name="preferredContact"
+                  value={formData.preferredContact}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors appearance-none pr-8"
                 >
-                  <option value="general">General Inquiry</option>
-                  <option value="halol">Halol App</option>
-                  <option value="products">Medical Equipment</option>
-                  <option value="consultancy">Consultancy Services</option>
-                  <option value="partnership">Partnership</option>
-                  <option value="support">Technical Support</option>
+                  <option value="email">Email</option>
+                  <option value="phone">Phone</option>
+                  <option value="both">Both Email and Phone</option>
                 </select>
                 <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
                   <i className="ri-arrow-down-s-line text-gray-400"></i>
@@ -213,15 +200,7 @@ export default function ContactForm() {
               </div>
             </div>
 
-            {submitStatus && (
-              <div className={`p-4 rounded-xl ${
-                submitStatus.includes('Thank you') || submitStatus.includes('success') 
-                  ? 'bg-green-100 text-green-700 border border-green-200' 
-                  : 'bg-red-100 text-red-700 border border-red-200'
-              }`}>
-                {submitStatus}
-              </div>
-            )}
+
 
             <button
               type="submit"
@@ -233,6 +212,7 @@ export default function ContactForm() {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 }
