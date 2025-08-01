@@ -24,6 +24,7 @@ interface DeviceModalProps {
 }
 
 export default function DeviceModal({ device, onClose, onSuccess }: DeviceModalProps) {
+  const { t } = useTranslation('dashboard');
   const { data: session } = useSession();
   const [activeTab, setActiveTab] = useState<'buy' | 'rent'>('buy');
   const [quantity, setQuantity] = useState(1);
