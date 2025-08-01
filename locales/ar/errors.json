@@ -1,0 +1,54 @@
+{
+  "title": "خطأ",
+  "something_went_wrong": "حدث خطأ ما",
+  "page_not_found": "الصفحة غير موجودة",
+  "access_denied": "تم رفض الوصول",
+  "unauthorized": "غير مخول",
+  "forbidden": "محظور",
+  "internal_server_error": "خطأ داخلي في الخادم",
+  "bad_request": "طلب غير صحيح",
+  "network_error": "خطأ في الشبكة",
+  "timeout_error": "انتهت مهلة الطلب",
+  "validation_error": "خطأ في التحقق",
+  
+  "try_again": "حاول مرة أخرى",
+  "go_back": "العودة",
+  "go_home": "الذهاب للصفحة الرئيسية",
+  "contact_support": "اتصل بالدعم",
+  "refresh_page": "تحديث الصفحة",
+  "check_connection": "تحقق من اتصالك بالإنترنت",
+  
+  "field_required": "هذا الحقل ��طلوب",
+  "invalid_email": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+  "password_too_short": "يجب أن تكون كلمة المرور على الأقل 8 أحرف",
+  "passwords_dont_match": "كلمات المرور غير متطابقة",
+  "invalid_phone": "يرجى إدخال رقم هاتف صحيح",
+  "invalid_date": "يرجى إدخال تاريخ صحيح",
+  "file_too_large": "حجم الملف كبير جداً",
+  "invalid_file_type": "نوع ملف غير صحيح",
+  
+  "login_required": "يرجى تسجيل الدخول للمتابعة",
+  "session_expired": "انتهت صلاحية جلستك",
+  "account_locked": "الحساب مقفل مؤقتاً",
+  "too_many_attempts": "محاولات فاشلة كثيرة",
+  "verification_required": "يتطلب التحقق من البريد الإلكتروني",
+  
+  "payment_failed": "فشل في الدفع",
+  "payment_declined": "تم رفض الدفع",
+  "insufficient_funds": "أموال غير كافية",
+  "card_expired": "انتهت صلاحية البطاقة",
+  "invalid_card": "معلومات بطاقة غير صحيحة",
+  
+  "out_of_stock": "العنصر غير متوفر",
+  "item_unavailable": "العنصر غير متاح حالياً",
+  "quantity_exceeded": "الكمية المطلوبة تتجاوز المخزون المتاح",
+  "delivery_unavailable": "التوصيل غير متاح لهذا الموقع",
+  
+  "maintenance_mode": "النظام تحت الصيانة",
+  "service_unavailable": "الخدمة غير متاحة مؤقتاً",
+  "rate_limit_exceeded": "طلبات كثيرة، يرجى المحاولة مرة أخرى لاحقاً",
+  
+  "unexpected_error": "حدث خطأ غير متوقع",
+  "please_try_later": "يرجى المحاولة مرة أخرى لاحقاً",
+  "if_problem_persists": "إذا استمرت المشكلة، اتصل بالدعم"
+}
