@@ -74,7 +74,7 @@ model OrderItem {
   orderId  String
   deviceId String
   quantity Int
-  price    Float
+  price    Decimal @db.Decimal(10, 2)
 
   // Relations
   order  Order  @relation(fields: [orderId], references: [id])
