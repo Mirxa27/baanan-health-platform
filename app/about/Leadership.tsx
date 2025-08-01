@@ -41,19 +41,19 @@ export default function Leadership() {
                     <div className="w-5 sm:w-6 h-5 sm:h-6 flex items-center justify-center mr-3 sm:mr-4">
                       <i className="ri-graduation-cap-line text-lg sm:text-xl text-blue-600"></i>
                     </div>
-                    <span className="text-sm sm:text-base text-gray-700">Master's in Biomedical Engineering</span>
+                    <span className="text-sm sm:text-base text-gray-700">{t('education')}</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-5 sm:w-6 h-5 sm:h-6 flex items-center justify-center mr-3 sm:mr-4">
                       <i className="ri-award-line text-lg sm:text-xl text-purple-600"></i>
                     </div>
-                    <span className="text-sm sm:text-base text-gray-700">Healthcare Innovation Award 2023</span>
+                    <span className="text-sm sm:text-base text-gray-700">{t('award')}</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-5 sm:w-6 h-5 sm:h-6 flex items-center justify-center mr-3 sm:mr-4">
                       <i className="ri-global-line text-lg sm:text-xl text-green-600"></i>
                     </div>
-                    <span className="text-sm sm:text-base text-gray-700">15+ Years Healthcare Technology</span>
+                    <span className="text-sm sm:text-base text-gray-700">{t('experience_years')}</span>
                   </div>
                 </div>
                 
