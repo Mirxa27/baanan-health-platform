@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { signIn } from '../../../hooks/useAuth';
-import { useTranslation } from '../../../../hooks/useTranslation';
+import { useTranslation } from '../../../../hooks/useTranslation.simple';
 
 export default function SigninPage() {
   const { t } = useTranslation('signin');
