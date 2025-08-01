@@ -9,15 +9,13 @@ interface LanguageSwitcherProps {
 }
 
 export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
-  const { lang } = useTranslation('common');
+  const { locale, setLocale } = useTranslation('common');
   const router = useRouter();
   const pathname = usePathname();
 
   const toggleLanguage = () => {
-    const newLocale = lang === 'en' ? 'ar' : 'en';
-    // For next-translate, we need to navigate to the new locale URL
-    const newPath = pathname.replace(/^\/[a-z]{2}/, '') || '/';
-    router.push(`/${newLocale}${newPath}`);
+    const newLocale = locale === 'en' ? 'ar' : 'en';
+    setLocale(newLocale);
   };
 
   return (
