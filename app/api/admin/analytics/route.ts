@@ -114,8 +114,8 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    const prevRevenue = prevOrders.reduce((sum, order) => sum + order.totalAmount, 0) +
-                       prevRentals.reduce((sum, rental) => sum + rental.totalAmount, 0);
+    const prevRevenue = prevOrders.reduce((sum, order) => sum + Number(order.totalAmount), 0) +
+                       prevRentals.reduce((sum, rental) => sum + Number(rental.totalAmount), 0);
     
     const revenueGrowth = prevRevenue > 0 ? ((totalRevenue - prevRevenue) / prevRevenue) * 100 : 0;
     const orderGrowth = prevOrders.length > 0 ? ((totalOrders - prevOrders.length) / prevOrders.length) * 100 : 0;
