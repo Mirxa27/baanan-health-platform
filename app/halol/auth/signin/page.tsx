@@ -107,7 +107,7 @@ export default function SigninPage() {
           <div className="space-y-4">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                Email Address
+                {t('email_address')}
               </label>
               <input
                 id="email"
@@ -117,13 +117,13 @@ export default function SigninPage() {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="john.doe@hospital.com"
+                placeholder={t('email_placeholder')}
               />
             </div>
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-                Password
+                {t('password')}
               </label>
               <input
                 id="password"
@@ -133,7 +133,7 @@ export default function SigninPage() {
                 value={formData.password}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="••••••••"
+                placeholder={t('password_placeholder')}
               />
             </div>
 
@@ -148,11 +148,11 @@ export default function SigninPage() {
                   className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                 />
                 <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-700">
-                  Remember me
+                  {t('remember_me')}
                 </label>
               </div>
               <Link href="/halol/auth/forgot-password" className="text-sm text-blue-600 hover:text-blue-500">
-                Forgot password?
+                {t('forgot_password')}
               </Link>
             </div>
           </div>
