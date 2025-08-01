@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const totalAmount = device.rentPrice * validatedData.quantity * validatedData.days;
+    const totalAmount = Number(device.rentPrice) * validatedData.quantity * validatedData.days;
 
     // Create Stripe checkout session
     const stripeSession = await stripe.checkout.sessions.create({
