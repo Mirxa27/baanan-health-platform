@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function TestimonialsSection() {
   const { t } = useTranslation('common');

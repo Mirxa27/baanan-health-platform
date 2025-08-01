@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function CTASection() {
   const { t } = useTranslation('common');
