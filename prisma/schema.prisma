@@ -77,7 +77,7 @@ model OrderItem {
   price    Decimal @db.Decimal(10, 2)
 
   // Relations
-  order  Order  @relation(fields: [orderId], references: [id])
+  order  Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
   device Device @relation(fields: [deviceId], references: [id])
 
   @@map("order_items")
