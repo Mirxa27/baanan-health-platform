@@ -33,7 +33,7 @@ export function LanguageSwitcher({ className = '' }: LanguageSwitcherProps) {
 }
 
 export function LanguageDropdown({ className = '' }: LanguageSwitcherProps) {
-  const { lang } = useTranslation('common');
+  const { locale, setLocale } = useTranslation('common');
   const router = useRouter();
   const pathname = usePathname();
 
@@ -43,8 +43,7 @@ export function LanguageDropdown({ className = '' }: LanguageSwitcherProps) {
   ];
 
   const handleLanguageChange = (newLocale: string) => {
-    const newPath = pathname.replace(/^\/[a-z]{2}/, '') || '/';
-    router.push(`/${newLocale}${newPath}`);
+    setLocale(newLocale as 'en' | 'ar');
   };
 
   return (
