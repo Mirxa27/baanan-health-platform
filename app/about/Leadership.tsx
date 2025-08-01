@@ -28,12 +28,12 @@ export default function Leadership() {
                   <span className="inline-block px-3 sm:px-4 py-1 sm:py-2 bg-blue-100 text-blue-600 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4">
                     Co-Founder & CEO
                   </span>
-                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Eng. Sultan Al Khamshi</h3>
-                  <p className="text-lg sm:text-xl text-blue-600 font-medium">Chief Executive Officer & Co-Founder</p>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">{t('ceo_name')}</h3>
+                  <p className="text-lg sm:text-xl text-blue-600 font-medium">{t('ceo_title')}</p>
                 </div>
                 
                 <p className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8">
-                  Eng. Sultan Al Khamshi is a visionary leader with over 15 years of experience in healthcare technology and engineering. His passion for innovation and commitment to improving healthcare accessibility has been the driving force behind Baanan's revolutionary approach to health-tech solutions.
+                  {t('ceo_description')}
                 </p>
                 
                 <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
