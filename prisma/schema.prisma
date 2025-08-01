@@ -57,7 +57,7 @@ model Order {
   id          String      @id @default(cuid())
   userId      String
   status      OrderStatus @default(PENDING)
-  totalAmount Float
+  totalAmount Decimal     @db.Decimal(10, 2)
   paymentId   String?
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
