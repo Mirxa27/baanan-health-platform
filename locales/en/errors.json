@@ -1,0 +1,54 @@
+{
+  "title": "Error",
+  "something_went_wrong": "Something went wrong",
+  "page_not_found": "Page not found",
+  "access_denied": "Access denied",
+  "unauthorized": "Unauthorized",
+  "forbidden": "Forbidden",
+  "internal_server_error": "Internal server error",
+  "bad_request": "Bad request",
+  "network_error": "Network error",
+  "timeout_error": "Request timeout",
+  "validation_error": "Validation error",
+  
+  "try_again": "Try again",
+  "go_back": "Go back",
+  "go_home": "Go to homepage",
+  "contact_support": "Contact support",
+  "refresh_page": "Refresh page",
+  "check_connection": "Check your internet connection",
+  
+  "field_required": "This field is required",
+  "invalid_email": "Please enter a valid email address",
+  "password_too_short": "Password must be at least 8 characters",
+  "passwords_dont_match": "Passwords don't match",
+  "invalid_phone": "Please enter a valid phone number",
+  "invalid_date": "Please enter a valid date",
+  "file_too_large": "File size is too large",
+  "invalid_file_type": "Invalid file type",
+  
+  "login_required": "Please log in to continue",
+  "session_expired": "Your session has expired",
+  "account_locked": "Account temporarily locked",
+  "too_many_attempts": "Too many failed attempts",
+  "verification_required": "Email verification required",
+  
+  "payment_failed": "Payment failed",
+  "payment_declined": "Payment was declined",
+  "insufficient_funds": "Insufficient funds",
+  "card_expired": "Card has expired",
+  "invalid_card": "Invalid card information",
+  
+  "out_of_stock": "Item is out of stock",
+  "item_unavailable": "Item is currently unavailable",
+  "quantity_exceeded": "Requested quantity exceeds available stock",
+  "delivery_unavailable": "Delivery not available to this location",
+  
+  "maintenance_mode": "System is under maintenance",
+  "service_unavailable": "Service temporarily unavailable",
+  "rate_limit_exceeded": "Too many requests, please try again later",
+  
+  "unexpected_error": "An unexpected error occurred",
+  "please_try_later": "Please try again later",
+  "if_problem_persists": "If the problem persists, contact support"
+}
