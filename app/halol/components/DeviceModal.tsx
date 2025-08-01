@@ -75,7 +75,9 @@ export default function DeviceModal({ device, onClose, onSuccess }: DeviceModalP
         body: JSON.stringify({
           deviceId: device.id,
           quantity,
-          days: rentalDays,
+          days: calculatedDays,
+          startDate: startDate?.toISOString(),
+          endDate: endDate?.toISOString(),
         }),
       });
 
