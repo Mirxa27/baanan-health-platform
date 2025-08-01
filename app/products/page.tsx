@@ -163,8 +163,13 @@ export default function ProductsPage() {
               {filteredProducts.map((product) => (
                 <div key={product.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:scale-105">
                   <div className="relative">
-                    <div className="h-48 bg-gray-200 flex items-center justify-center">
-                      <i className="ri-hospital-line text-4xl text-gray-400"></i>
+                    <div className="h-48 bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
+                          <i className={`${product.icon} text-3xl text-blue-600`}></i>
+                        </div>
+                        <p className="text-blue-600 font-medium">Medical Device</p>
+                      </div>
                     </div>
                     <div className="absolute top-4 right-4">
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${
