@@ -1,11 +1,70 @@
 {
-  "title": "Baanan - Healthcare Technology Innovation",
-  "description": "Baanan is Saudi Arabia's premier health-tech company, seamlessly blending innovative technology with holistic wellness solutions.",
-  "hero_title": "Transforming Healthcare Through Technology",
-  "hero_subtitle": "Innovative medical solutions for modern healthcare facilities",
+  "title": "Baanan - Medical Device Solutions",
+  "description": "Professional medical device management with Halol app",
+  "hero_title": "Advanced Medical Device Solutions",
+  "hero_subtitle": "Empowering Healthcare Excellence",
+  "hero_description": "Comprehensive medical device management, procurement, and maintenance solutions for healthcare facilities across the Middle East.",
   "get_started": "Get Started",
   "learn_more": "Learn More",
-  "trusted_by": "Trusted by leading healthcare institutions",
-  "features_title": "Revolutionary Healthcare Solutions",
-  "features_subtitle": "Discover our comprehensive range of medical technology designed to enhance patient care"
+  "watch_demo": "Watch Demo",
+  "download_brochure": "Download Brochure",
+  "contact_sales": "Contact Sales",
+  
+  "trusted_by": "Trusted by Healthcare Leaders",
+  "healthcare_professionals": "Healthcare Professionals",
+  "medical_facilities": "Medical Facilities",
+  "countries_served": "Countries Served",
+  "devices_managed": "Devices Managed",
+  "customer_satisfaction": "Customer Satisfaction",
+  
+  "features_title": "Comprehensive Healthcare Solutions",
+  "features_subtitle": "Everything you need to manage medical devices efficiently",
+  
+  "device_management_title": "Device Management",
+  "device_management_description": "Complete lifecycle management of medical devices with real-time tracking and monitoring.",
+  
+  "procurement_title": "Smart Procurement",
+  "procurement_description": "Streamlined purchasing process with verified suppliers and competitive pricing.",
+  
+  "maintenance_title": "Preventive Maintenance",
+  "maintenance_description": "Scheduled maintenance programs to ensure optimal device performance and compliance.",
+  
+  "analytics_title": "Analytics & Insights",
+  "analytics_description": "Data-driven insights to optimize operations and reduce costs.",
+  
+  "compliance_title": "Regulatory Compliance", 
+  "compliance_description": "Ensure all devices meet local and international regulatory standards.",
+  
+  "support_title": "24/7 Support",
+  "support_description": "Round-the-clock technical support and customer service.",
+  
+  "halol_app_title": "Introducing Halol App",
+  "halol_app_subtitle": "Complete Healthcare Ecosystem in Your Pocket",
+  "halol_app_description": "Manage medical devices, place orders, schedule maintenance, and access support - all from your mobile device.",
+  "download_ios": "Download for iOS",
+  "download_android": "Download for Android",
+  "available_soon": "Available Soon",
+  
+  "testimonials_title": "What Our Customers Say",
+  "testimonials_subtitle": "Healthcare professionals trust Baanan for their medical device needs",
+  
+  "cta_title": "Ready to Transform Your Healthcare Operations?",
+  "cta_subtitle": "Join thousands of healthcare professionals who trust Baanan for their medical device management.",
+  "cta_description": "Get started with our comprehensive medical device solutions today.",
+  "start_free_trial": "Start Free Trial",
+  "schedule_demo": "Schedule Demo",
+  "talk_to_expert": "Talk to Expert",
+  
+  "footer_description": "Leading provider of medical device management solutions in the Middle East.",
+  "quick_links": "Quick Links",
+  "solutions": "Solutions",
+  "company": "Company",
+  "support": "Support",
+  "legal": "Legal",
+  "follow_us": "Follow Us",
+  "newsletter_title": "Stay Updated",
+  "newsletter_description": "Subscribe to our newsletter for the latest healthcare technology insights.",
+  "email_placeholder": "Enter your email",
+  "subscribe": "Subscribe",
+  "all_rights_reserved": "All rights reserved."
 }
