@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import AnalyticsDashboard from './AnalyticsDashboard';
-import useTranslation from '../../../hooks/useTranslation';
+import useTranslation from '../../../hooks/useTranslation.simple';
 
 interface Device {
   id: string;

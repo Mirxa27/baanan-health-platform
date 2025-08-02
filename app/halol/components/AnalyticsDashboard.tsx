@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts';
-import useTranslation from '../../../hooks/useTranslation';
+import useTranslation from '../../../hooks/useTranslation.simple';
 
 interface AnalyticsData {
   totalRevenue: number;

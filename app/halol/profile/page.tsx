@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useTranslation } from '../../../hooks/useTranslation';
+import { useTranslation } from '../../../hooks/useTranslation.simple';
 
 interface UserProfile {
   id: string;

@@ -1,17 +1,24 @@
-
 'use client';
 import { useState } from 'react';
+import { useToast } from '../../components/Toast';
 
 export default function ConsultancyCTA() {
+  const { showToast, ToastContainer } = useToast();
   const [selectedPackage, setSelectedPackage] = useState(0);
   const [showContactForm, setShowContactForm] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    organization: '',
-    package: '',
-    message: ''
+    company: '',
+    position: '',
+    industry: 'healthcare',
+    consultationType: 'strategy',
+    budget: 'under-50k',
+    timeline: '1-3-months',
+    description: '',
+    preferredMeeting: 'video'
   });
 
   const packages = [
@@ -72,19 +79,55 @@ export default function ConsultancyCTA() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you! We will contact you within 24 hours.');
-    setShowContactForm(false);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      organization: '',
-      package: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/consultation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        showToast({
+          message: result.message,
+          type: 'success',
+          duration: 8000
+        });
+        setShowContactForm(false);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          position: '',
+          industry: 'healthcare',
+          consultationType: 'strategy',
+          budget: 'under-50k',
+          timeline: '1-3-months',
+          description: '',
+          preferredMeeting: 'video'
+        });
+      } else {
+        showToast({
+          message: result.message || 'Failed to submit consultation request. Please try again.',
+          type: 'error'
+        });
+      }
+    } catch (error) {
+      showToast({
+        message: 'Network error. Please check your connection and try again.',
+        type: 'error'
+      });
+    }
+
+    setIsSubmitting(false);
   };
 
   const getColorClasses = (color: string) => {
@@ -144,7 +187,7 @@ export default function ConsultancyCTA() {
               <button
                 onClick={() => {
                   setSelectedPackage(index);
-                  setFormData({...formData, package: pkg.name});
+                  setFormData({...formData, consultationType: pkg.name.toLowerCase().includes('consultation') ? 'strategy' : pkg.name.toLowerCase().includes('transformation') ? 'technology' : 'other'});
                   setShowContactForm(true);
                 }}
                 className={`w-full bg-gradient-to-r ${getColorClasses(pkg.color)} text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:opacity-90 transition-all transform hover:scale-105 cursor-pointer whitespace-nowrap`}
@@ -170,81 +213,123 @@ export default function ConsultancyCTA() {
               </div>
               
               <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Position</label>
+                    <input
+                      type="text"
+                      name="position"
+                      required
+                      value={formData.position}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      required
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Company</label>
                   <input
                     type="text"
-                    name="name"
+                    name="company"
                     required
-                    value={formData.name}
+                    value={formData.company}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                   />
                 </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                  />
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Budget Range</label>
+                    <select
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                    >
+                      <option value="under-50k">Under $50K</option>
+                      <option value="50k-100k">$50K - $100K</option>
+                      <option value="100k-250k">$100K - $250K</option>
+                      <option value="250k-500k">$250K - $500K</option>
+                      <option value="over-500k">Over $500K</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Timeline</label>
+                    <select
+                      name="timeline"
+                      value={formData.timeline}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                    >
+                      <option value="immediate">Immediate</option>
+                      <option value="1-3-months">1-3 Months</option>
+                      <option value="3-6-months">3-6 Months</option>
+                      <option value="6-12-months">6-12 Months</option>
+                      <option value="flexible">Flexible</option>
+                    </select>
+                  </div>
                 </div>
-                
+
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Organization</label>
-                  <input
-                    type="text"
-                    name="organization"
-                    required
-                    value={formData.organization}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Selected Package</label>
-                  <input
-                    type="text"
-                    value={formData.package}
-                    readOnly
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-gray-50 text-sm"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Message (Optional)</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Project Description</label>
                   <textarea
-                    name="message"
+                    name="description"
                     rows={3}
-                    value={formData.message}
+                    required
+                    value={formData.description}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm"
-                    placeholder="Tell us about your specific needs..."
+                    placeholder="Please describe your project requirements and goals..."
                   ></textarea>
                 </div>
-                
+
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-all text-sm"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-all text-sm disabled:opacity-50"
                 >
-                  Submit Request
+                  {isSubmitting ? 'Submitting...' : 'Submit Consultation Request'}
                 </button>
               </form>
             </div>
@@ -302,6 +387,7 @@ export default function ConsultancyCTA() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </section>
   );
 }

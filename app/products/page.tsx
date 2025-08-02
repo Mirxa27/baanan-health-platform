@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function ProductsPage() {
   const { t } = useTranslation('products');
@@ -24,7 +24,7 @@ export default function ProductsPage() {
       category: 'vital-signs',
       price: '$299',
       originalPrice: '$349',
-      image: '/api/placeholder/300/200',
+      icon: 'ri-heart-pulse-line',
       features: ['Automatic inflation', 'Memory storage', 'Large LCD display', 'Irregular heartbeat detection'],
       rating: 4.8,
       reviews: 124,
@@ -36,7 +36,7 @@ export default function ProductsPage() {
       category: 'vital-signs',
       price: '$149',
       originalPrice: '$179',
-      image: '/api/placeholder/300/200',
+      icon: 'ri-heart-add-line',
       features: ['SpO2 monitoring', 'Pulse rate display', 'Low battery indicator', 'Auto power off'],
       rating: 4.9,
       reviews: 89,
@@ -48,7 +48,7 @@ export default function ProductsPage() {
       category: 'respiratory',
       price: '$199',
       originalPrice: '$229',
-      image: '/api/placeholder/300/200',
+      icon: 'ri-lungs-line',
       features: ['Quiet operation', 'Fast nebulization', 'Easy cleaning', 'Compact design'],
       rating: 4.7,
       reviews: 156,
@@ -60,7 +60,7 @@ export default function ProductsPage() {
       category: 'vital-signs',
       price: '$49',
       originalPrice: '$59',
-      image: '/api/placeholder/300/200',
+      icon: 'ri-temp-hot-line',
       features: ['Fast reading', 'Fever alarm', 'Memory recall', 'Waterproof'],
       rating: 4.6,
       reviews: 203,
@@ -72,7 +72,7 @@ export default function ProductsPage() {
       category: 'mobility',
       price: '$1,299',
       originalPrice: '$1,499',
-      image: '/api/placeholder/300/200',
+      icon: 'ri-wheelchair-line',
       features: ['Long battery life', 'Comfortable seating', 'Easy controls', 'Foldable design'],
       rating: 4.8,
       reviews: 67,
@@ -84,7 +84,7 @@ export default function ProductsPage() {
       category: 'furniture',
       price: '$2,299',
       originalPrice: '$2,599',
-      image: '/api/placeholder/300/200',
+      icon: 'ri-hotel-bed-line',
       features: ['Height adjustment', 'Side rails', 'Trendelenburg position', 'Emergency backup'],
       rating: 4.9,
       reviews: 45,
@@ -163,8 +163,13 @@ export default function ProductsPage() {
               {filteredProducts.map((product) => (
                 <div key={product.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:scale-105">
                   <div className="relative">
-                    <div className="h-48 bg-gray-200 flex items-center justify-center">
-                      <i className="ri-hospital-line text-4xl text-gray-400"></i>
+                    <div className="h-48 bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
+                          <i className={`${product.icon} text-3xl text-blue-600`}></i>
+                        </div>
+                        <p className="text-blue-600 font-medium">Medical Device</p>
+                      </div>
                     </div>
                     <div className="absolute top-4 right-4">
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${

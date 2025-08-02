@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { signIn } from '../../../hooks/useAuth';
-import { useTranslation } from '../../../../hooks/useTranslation';
+import { useTranslation } from '../../../../hooks/useTranslation.simple';
 
 export default function SigninPage() {
   const { t } = useTranslation('signin');
@@ -29,7 +29,7 @@ export default function SigninPage() {
     setIsLoading(true);
     setError('');
 
-    console.log('Attempting signin with:', { email: formData.email, hasPassword: !!formData.password });
+
 
     try {
       const result = await signIn('credentials', {
@@ -38,17 +38,17 @@ export default function SigninPage() {
         redirect: false,
       });
 
-      console.log('NextAuth result:', result);
+
 
       if (result?.error) {
         console.error('Sign in error:', result.error);
         setError(`${t('authentication_failed')}: ${result.error}. ${t('check_credentials')}`);
       } else if (result?.ok) {
-        console.log('Sign in successful, redirecting...');
+
         // Redirect to dashboard on success
         window.location.href = '/halol/dashboard';
       } else {
-        console.log('Unexpected result:', result);
+
         setError(t('error_occurred'));
       }
     } catch (error) {

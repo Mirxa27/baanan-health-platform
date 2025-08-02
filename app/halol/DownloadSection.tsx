@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function DownloadSection() {
   const { t } = useTranslation('halol'); // Assuming 'halol' namespace for this component

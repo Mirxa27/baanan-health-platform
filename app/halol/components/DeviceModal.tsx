@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { useTranslation } from '../../../hooks/useTranslation';
+import { useTranslation } from '../../../hooks/useTranslation.simple';
 
 interface Device {
   id: string;

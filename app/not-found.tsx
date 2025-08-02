@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { useTranslation } from '../hooks/useTranslation';
+import { useTranslation } from '../hooks/useTranslation.simple';
 
 export default function NotFound() {
   const { t } = useTranslation('not-found'); // Assuming 'not-found' namespace for this page

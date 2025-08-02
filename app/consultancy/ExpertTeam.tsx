@@ -1,6 +1,5 @@
-
 'use client';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function ExpertTeam() {
   const { t } = useTranslation('consultancy'); // Assuming 'consultancy' namespace for this component
@@ -12,7 +11,7 @@ export default function ExpertTeam() {
       specialization: 'Digital Health Transformation',
       experience: '18+ Years',
       certifications: ['PMP', 'HIMSS', 'Six Sigma Black Belt'],
-      image: 'https://readdy.ai/api/search-image?query=professional%20Middle%20Eastern%20female%20healthcare%20consultant%2C%20confident%20medical%20technology%20expert%2C%20modern%20corporate%20portrait%2C%20clean%20professional%20background%2C%20successful%20woman%20in%20healthcare%20consulting&width=300&height=400&seq=expert-sarah&orientation=portrait'
+      image: null
     },
     {
       name: 'Eng. Mohammed Al-Rashid',
@@ -20,7 +19,7 @@ export default function ExpertTeam() {
       specialization: 'IoT & Robotics Implementation',
       experience: '15+ Years',
       certifications: ['IEEE Certified', 'FDA Compliance', 'ISO 13485'],
-      image: 'https://readdy.ai/api/search-image?query=professional%20Middle%20Eastern%20male%20medical%20engineer%2C%20confident%20healthcare%20technology%20specialist%2C%20modern%20corporate%20portrait%2C%20clean%20professional%20background%2C%20successful%20engineer%20in%20medical%20consulting&width=300&height=400&seq=expert-mohammed&orientation=portrait'
+      image: null
     },
     {
       name: 'Dr. Fatima Al-Zahra',
@@ -28,7 +27,7 @@ export default function ExpertTeam() {
       specialization: 'Healthcare Data Science',
       experience: '12+ Years',
       certifications: ['Ph.D. Data Science', 'AWS Certified', 'Google AI'],
-      image: 'https://readdy.ai/api/search-image?query=professional%20Middle%20Eastern%20female%20AI%20consultant%2C%20confident%20data%20science%20expert%2C%20modern%20corporate%20portrait%2C%20clean%20professional%20background%2C%20successful%20woman%20in%20healthcare%20analytics&width=300&height=400&seq=expert-fatima&orientation=portrait'
+      image: null
     },
     {
       name: 'Dr. Ahmed Al-Khatib',
@@ -36,7 +35,7 @@ export default function ExpertTeam() {
       specialization: 'Healthcare Standards & Compliance',
       experience: '20+ Years',
       certifications: ['JCI Surveyor', 'HIPAA Expert', 'Quality Management'],
-      image: 'https://readdy.ai/api/search-image?query=professional%20Middle%20Eastern%20male%20healthcare%20compliance%20expert%2C%20confident%20regulatory%20consultant%2C%20modern%20corporate%20portrait%2C%20clean%20professional%20background%2C%20successful%20doctor%20in%20healthcare%20compliance&width=300&height=400&seq=expert-ahmed&orientation=portrait'
+      image: null
     },
     {
       name: 'Eng. Aisha Al-Mansouri',
@@ -44,7 +43,7 @@ export default function ExpertTeam() {
       specialization: 'Process Optimization',
       experience: '14+ Years',
       certifications: ['Lean Six Sigma', 'Change Management', 'ITIL'],
-      image: 'https://readdy.ai/api/search-image?query=professional%20Middle%20Eastern%20female%20operations%20manager%2C%20confident%20process%20optimization%20expert%2C%20modern%20corporate%20portrait%2C%20clean%20professional%20background%2C%20successful%20woman%20in%20healthcare%20operations&width=300&height=400&seq=expert-aisha&orientation=portrait'
+      image: null
     },
     {
       name: 'Dr. Omar Al-Hashemi',
@@ -52,7 +51,7 @@ export default function ExpertTeam() {
       specialization: 'Healthcare Strategy & Growth',
       experience: '16+ Years',
       certifications: ['MBA Healthcare', 'Strategy Certified', 'Leadership'],
-      image: 'https://readdy.ai/api/search-image?query=professional%20Middle%20Eastern%20male%20healthcare%20strategist%2C%20confident%20strategic%20planning%20director%2C%20modern%20corporate%20portrait%2C%20clean%20professional%20background%2C%20successful%20executive%20in%20healthcare%20strategy&width=300&height=400&seq=expert-omar&orientation=portrait'
+      image: null
     }
   ];
 
@@ -77,11 +76,13 @@ export default function ExpertTeam() {
             >
               <div className="text-center">
                 <div className="relative mb-4 sm:mb-6">
-                  <img
-                    src={expert.image}
-                    alt={expert.name}
-                    className="w-24 sm:w-32 h-32 sm:h-40 object-cover object-top rounded-xl mx-auto shadow-lg"
-                  />
+                  <div className="w-24 sm:w-32 h-32 sm:h-40 bg-gradient-to-br from-blue-100 to-purple-100 rounded-xl mx-auto shadow-lg flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mx-auto shadow-sm">
+                        <i className="ri-user-line text-xl text-blue-600"></i>
+                      </div>
+                    </div>
+                  </div>
                   <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium">
                     {expert.experience}
                   </div>

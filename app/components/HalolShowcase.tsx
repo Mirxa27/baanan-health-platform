@@ -1,5 +1,5 @@
 'use client';
-import { useTranslation } from '../../hooks/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 import Link from 'next/link';
 
 export default function HalolShowcase() {
