@@ -31,19 +31,19 @@ export default function MobileNavigation() {
       activeIcon: 'ri-home-4-fill'
     },
     {
-      name: 'Products',
+      name: t('products_title'),
       href: '/products',
       icon: 'ri-hospital-line',
       activeIcon: 'ri-hospital-fill'
     },
     {
-      name: 'Platform',
+      name: t('halol_platform'),
       href: '/halol',
       icon: 'ri-computer-line',
       activeIcon: 'ri-computer-fill'
     },
     {
-      name: 'Consulting',
+      name: t('professional_healthcare_consulting'),
       href: '/consultancy',
       icon: 'ri-user-heart-line',
       activeIcon: 'ri-user-heart-fill'
