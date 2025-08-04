@@ -1,10 +1,15 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function HeroSection() {
   const { t } = useTranslation('common');
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   return (
     <section
