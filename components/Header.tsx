@@ -20,7 +20,7 @@ export default function Header() {
     { name: t('home'), href: '/' },
     { name: t('about_us_title'), href: '/about' },
     { name: t('products_title'), href: '/products' },
-    { name: 'Halol Platform', href: '/halol' },
+    { name: 'Halol Platform', href: '/halol/dashboard' },
     { name: t('professional_healthcare_consulting'), href: '/consultancy' },
     { name: t('healthcare_knowledge_hub'), href: '/resources' },
     { name: t('contact_title'), href: '/contact' }
