@@ -161,52 +161,77 @@ export default function MobileNavigation() {
   };
 
   return (
-    <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-200 shadow-lg safe-area-pb">
-      <div className="grid grid-cols-5 h-16">
-        {navigationItems.map((item) => {
-          const active = isActive(item);
-          
-          return (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={`flex flex-col items-center justify-center space-y-1 transition-all duration-200 ${
-                active 
-                  ? 'text-blue-600 bg-blue-50 transform scale-105' 
-                  : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50 active:scale-95'
-              }`}
-            >
-              <div className="relative">
-                <i className={`${active ? item.activeIcon : item.icon} text-xl`}></i>
-                {active && (
-                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
-                )}
-              </div>
-              <span className="text-xs font-medium truncate px-1 max-w-full">
-                {item.name.length > 8 ? item.name.substring(0, 6) + '...' : item.name}
-              </span>
-            </Link>
-          );
-        })}
-      </div>
+    <>
+      {/* Glassmorphic Mobile Navigation */}
+      <nav className="md:hidden fixed bottom-4 left-4 right-4 z-50 safe-area-pb">
+        <div className="relative">
+          {/* Glassmorphic background with blur effect */}
+          <div className="absolute inset-0 bg-white/20 backdrop-blur-xl rounded-2xl border border-white/30 shadow-2xl"></div>
 
-      {/* Authentication indicator for logged-in users */}
+          {/* Navigation items */}
+          <div className="relative grid grid-cols-5 h-16 px-2">
+            {navigationItems.map((item, index) => {
+              const active = isActive(item);
+
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="flex items-center justify-center relative group"
+                >
+                  {/* Active background */}
+                  {active && (
+                    <div className="absolute inset-1 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-xl backdrop-blur-sm border border-white/40"></div>
+                  )}
+
+                  {/* Icon container */}
+                  <div className={`relative w-10 h-10 flex items-center justify-center rounded-xl transition-all duration-300 ${
+                    active
+                      ? 'transform scale-110'
+                      : 'group-hover:scale-105 group-active:scale-95'
+                  }`}>
+                    {/* Icon with glow effect */}
+                    <i className={`${active ? item.activeIcon : item.icon} text-xl transition-all duration-300 ${
+                      active
+                        ? 'text-white drop-shadow-lg'
+                        : 'text-gray-700 group-hover:text-blue-600'
+                    }`}></i>
+
+                    {/* Active indicator dot */}
+                    {active && (
+                      <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full shadow-lg animate-pulse"></div>
+                    )}
+
+                    {/* Hover ripple effect */}
+                    <div className={`absolute inset-0 rounded-xl transition-all duration-300 ${
+                      !active ? 'group-hover:bg-white/20 group-active:bg-white/30' : ''
+                    }`}></div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </nav>
+
+      {/* Floating user indicator for logged-in users */}
       {session && (
-        <div className="absolute -top-12 right-4 bg-white rounded-full shadow-lg p-2 border border-gray-200">
-          <div className="flex items-center space-x-2">
-            <div className="w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
-              <span className="text-white text-xs font-semibold">
-                {session.user?.name?.charAt(0).toUpperCase() || 'U'}
-              </span>
-            </div>
-            <div className="hidden sm:block">
-              <span className={`text-xs px-2 py-1 rounded-full ${
+        <div className="md:hidden fixed bottom-24 right-4 z-40">
+          <div className="relative">
+            <div className="absolute inset-0 bg-white/20 backdrop-blur-xl rounded-full border border-white/30 shadow-2xl"></div>
+            <div className="relative flex items-center space-x-2 px-3 py-2">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center shadow-lg">
+                <span className="text-white text-sm font-bold">
+                  {session.user?.name?.charAt(0).toUpperCase() || 'U'}
+                </span>
+              </div>
+              <div className={`px-2 py-1 rounded-full text-xs font-medium transition-all ${
                 session.user?.role === 'ADMIN'
-                  ? 'bg-purple-100 text-purple-800'
-                  : 'bg-blue-100 text-blue-800'
+                  ? 'bg-purple-500/20 text-purple-700 border border-purple-400/30'
+                  : 'bg-blue-500/20 text-blue-700 border border-blue-400/30'
               }`}>
                 {session.user?.role}
-              </span>
+              </div>
             </div>
           </div>
         </div>
@@ -214,10 +239,15 @@ export default function MobileNavigation() {
 
       {/* Loading indicator */}
       {status === 'loading' && (
-        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-white rounded-full shadow-lg p-2 border border-gray-200">
-          <div className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+        <div className="md:hidden fixed bottom-24 left-1/2 transform -translate-x-1/2 z-40">
+          <div className="relative">
+            <div className="absolute inset-0 bg-white/20 backdrop-blur-xl rounded-full border border-white/30 shadow-2xl"></div>
+            <div className="relative p-3">
+              <div className="w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          </div>
         </div>
       )}
-    </nav>
+    </>
   );
 }
