@@ -73,18 +73,27 @@ export default function HeroSection() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 sm:gap-8">
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">50K+</div>
-                <div className="text-xs sm:text-sm text-gray-600">{t('active_users')}</div>
+            <div className={`grid grid-cols-3 gap-4 sm:gap-8 transition-all duration-1000 delay-900 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+              <div className="text-center group">
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 hover:shadow-xl transition-all transform hover:scale-105 group-hover:bg-blue-50">
+                  <i className="ri-user-heart-line text-2xl text-blue-600 mb-2"></i>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-blue-600 mb-1 sm:mb-2">50K+</div>
+                  <div className="text-xs sm:text-sm text-gray-600">{t('active_users')}</div>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-purple-600 mb-1 sm:mb-2">95%</div>
-                <div className="text-xs sm:text-sm text-gray-600">{t('satisfaction_rate')}</div>
+              <div className="text-center group">
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 hover:shadow-xl transition-all transform hover:scale-105 group-hover:bg-purple-50">
+                  <i className="ri-heart-pulse-line text-2xl text-purple-600 mb-2"></i>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-purple-600 mb-1 sm:mb-2">95%</div>
+                  <div className="text-xs sm:text-sm text-gray-600">{t('satisfaction_rate')}</div>
+                </div>
               </div>
-              <div className="text-center">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-600 mb-1 sm:mb-2">24/7</div>
-                <div className="text-xs sm:text-sm text-gray-600">{t('support_available')}</div>
+              <div className="text-center group">
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 hover:shadow-xl transition-all transform hover:scale-105 group-hover:bg-green-50">
+                  <i className="ri-customer-service-2-line text-2xl text-green-600 mb-2"></i>
+                  <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-600 mb-1 sm:mb-2">24/7</div>
+                  <div className="text-xs sm:text-sm text-gray-600">{t('support_available')}</div>
+                </div>
               </div>
             </div>
           </div>
