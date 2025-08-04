@@ -1,7 +1,8 @@
-
 'use client';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function AboutHero() {
+  const { t } = useTranslation('about');
   return (
     <section 
       className="relative py-16 sm:py-20 lg:py-32 overflow-hidden"
@@ -16,16 +17,16 @@ export default function AboutHero() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center">
           <span className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-blue-100 text-blue-600 rounded-full text-xs sm:text-sm font-medium mb-6 sm:mb-8">
-            🏥 About Baanan Health Technology
+            🏥 {t('about_tag')}
           </span>
-          
+
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight">
-            Pioneering the Future of
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Healthcare</span>
+            {t('hero_title_part1')}
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> {t('hero_title_part2')}</span>
           </h1>
-          
+
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-8 sm:mb-12 leading-relaxed max-w-4xl mx-auto px-4">
-            Baanan is Saudi Arabia's premier health-tech company, seamlessly blending innovative technology with holistic wellness to revolutionize healthcare delivery and patient outcomes.
+            {t('hero_description')}
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">

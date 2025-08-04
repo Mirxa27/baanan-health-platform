@@ -8,10 +8,18 @@
   "app_store_rating": "تقييم متجر التطبيقات",
   "medical_device_marketplace": "سوق الأجهزة الطبية",
   "equipment_import_services": "خدمات استيراد الأجهزة الطبية",
-  "maintenance_support": "الصيانة والدعم",
+  "maintenance_support": "الصيانة والدع��",
   "equipment_rental_solutions": "حلول تأجير الأجهزة الطبية",
   "ai_health_analytics": "تحليلات الصحة بالذكاء الاصطناعي",
   "telehealth_platform": "منصة التطبيب عن بُعد",
   "comprehensive_healthcare_features": "ميزات الرعاية الصحية الشاملة",
-  "everything_you_need_one_app": "كل ما تحتاجه في تطبيق واحد"
+  "everything_you_need_one_app": "كل ما تحتاجه في تطبيق واحد",
+  "hero_title": "منصة إدارة",
+  "hero_subtitle": "الأجهزة الطبية",
+  "hero_description": "نظام بيئي متكامل لشراء وبيع واستيراد وصيانة وتأجير الأجهزة الطبية من خلال منصة واحدة.",
+  "explore_platform": "استكشف المنصة",
+  "contact_sales": "اتصل بالمبيعات",
+  "healthcare_facilities": "المؤسسات الصحية",
+  "customer_support": "دعم العملاء",
+  "scroll_to_explore": "انتقل للاستكشاف"
 }

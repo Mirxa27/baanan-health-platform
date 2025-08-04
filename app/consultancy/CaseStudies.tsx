@@ -1,173 +1,167 @@
-
-'use client';
-import { useState } from 'react';
-
 export default function CaseStudies() {
-  const [activeCase, setActiveCase] = useState(0);
-
   const caseStudies = [
     {
-      title: 'King Fahd Medical City - Digital Transformation',
-      client: 'Major Healthcare System',
-      challenge: 'Legacy systems hampering patient care efficiency and data management across 1,200 beds and 15 specialized departments.',
-      solution: 'Implemented comprehensive EHR system, integrated medical devices, and developed AI-powered analytics dashboard for real-time patient monitoring.',
+      title: 'King Fahd Medical City Digital Transformation',
+      client: 'King Fahd Medical City',
+      category: 'Digital Transformation',
+      challenge: 'Modernize paper-based processes and integrate 15+ medical systems',
+      solution: 'Implemented comprehensive EHR system with seamless device integration',
       results: [
-        '45% reduction in patient wait times',
-        '60% improvement in data accuracy',
-        '30% increase in operational efficiency',
-        '$2.8M annual cost savings'
+        '60% reduction in patient wait times',
+        '40% improvement in data accuracy',
+        '85% staff satisfaction with new system',
+        'SAR 2.5M annual cost savings'
       ],
-      timeline: '18 months',
-      image: 'https://readdy.ai/api/search-image?query=modern%20hospital%20digital%20transformation%2C%20advanced%20medical%20technology%20implementation%2C%20healthcare%20professionals%20using%20digital%20systems%2C%20clean%20professional%20medical%20environment%20with%20integrated%20technology&width=600&height=400&seq=case-study-1&orientation=landscape'
+      image: '/cases/kfmc.jpg',
+      color: 'from-blue-500 to-cyan-500'
     },
     {
-      title: 'National Guard Health Affairs - AI Implementation',
-      client: 'Military Healthcare Network',
-      challenge: 'Need for predictive analytics to improve patient outcomes and reduce readmission rates across multiple facilities.',
-      solution: 'Deployed machine learning algorithms for early risk detection, integrated wearable devices, and created predictive dashboards for clinical staff.',
+      title: 'National Guard Hospital Security Enhancement',
+      client: 'National Guard Hospital',
+      category: 'Cybersecurity',
+      challenge: 'Strengthen cybersecurity posture and achieve HIPAA compliance',
+      solution: 'Deployed advanced security frameworks and staff training programs',
       results: [
-        '35% reduction in readmission rates',
-        '25% faster diagnosis accuracy',
-        '40% improvement in resource allocation',
-        '95% clinician adoption rate'
+        '100% HIPAA compliance achieved',
+        '90% reduction in security incidents',
+        'Zero data breaches post-implementation',
+        'Enhanced staff security awareness'
       ],
-      timeline: '12 months',
-      image: 'https://readdy.ai/api/search-image?query=AI%20medical%20analytics%20dashboard%2C%20healthcare%20data%20visualization%2C%20predictive%20healthcare%20technology%2C%20medical%20professionals%20analyzing%20patient%20data%2C%20modern%20clinical%20setting%20with%20advanced%20technology&width=600&height=400&seq=case-study-2&orientation=landscape'
+      image: '/cases/ngh.jpg',
+      color: 'from-purple-500 to-pink-500'
     },
     {
-      title: 'Riyadh Care Hospital - Robotic Integration',
-      client: 'Private Healthcare Provider',
-      challenge: 'Expanding physiotherapy services with consistent quality while managing increasing patient volume and staffing constraints.',
-      solution: 'Integrated robotic physiotherapy systems with personalized treatment protocols and staff training programs for optimal patient care delivery.',
+      title: 'Specialized Medical Center Integration',
+      client: 'Specialized Medical Center',
+      category: 'System Integration',
+      challenge: 'Connect 25+ medical devices with existing hospital information system',
+      solution: 'Custom API development and real-time data synchronization platform',
       results: [
-        '50% increase in patient capacity',
-        '80% improvement in treatment consistency',
-        '90% patient satisfaction rate',
-        '25% reduction in therapy duration'
+        '100% device connectivity achieved',
+        '50% faster diagnosis times',
+        'Real-time patient monitoring',
+        'Improved clinical decision making'
       ],
-      timeline: '8 months',
-      image: 'https://readdy.ai/api/search-image?query=robotic%20physiotherapy%20equipment%20in%20modern%20rehabilitation%20center%2C%20automated%20medical%20therapy%20devices%2C%20patients%20receiving%20robotic%20assisted%20treatment%2C%20clean%20professional%20medical%20setting&width=600&height=400&seq=case-study-3&orientation=landscape'
+      image: '/cases/smc.jpg',
+      color: 'from-green-500 to-teal-500'
     }
   ];
 
   return (
-    <section className="py-16 sm:py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-            Success
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Stories</span>
+    <section className="py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Success Stories
           </h2>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-            Discover how we've helped healthcare organizations transform their operations and improve patient outcomes.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Discover how we've helped leading healthcare organizations across the GCC 
+            transform their operations and improve patient care.
           </p>
         </div>
 
-        {/* Mobile Tab Navigation */}
-        <div className="flex flex-col sm:hidden mb-8">
-          <div className="flex overflow-x-auto pb-2">
-            {caseStudies.map((study, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveCase(index)}
-                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap mr-2 transition-all ${
-                  activeCase === index
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-              >
-                Case {index + 1}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Desktop Tab Navigation */}
-        <div className="hidden sm:flex justify-center mb-12">
-          <div className="flex bg-gray-100 rounded-full p-1">
-            {caseStudies.map((study, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveCase(index)}
-                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all whitespace-nowrap ${
-                  activeCase === index
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-              >
-                {study.client}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div>
-              <div className="mb-4 sm:mb-6">
-                <span className="inline-block px-3 sm:px-4 py-1 sm:py-2 bg-blue-100 text-blue-600 rounded-full text-xs sm:text-sm font-medium mb-4">
-                  {caseStudies[activeCase].client}
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
-                  {caseStudies[activeCase].title}
-                </h3>
-              </div>
-              
-              <div className="space-y-4 sm:space-y-6">
-                <div>
-                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">Challenge</h4>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    {caseStudies[activeCase].challenge}
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">Solution</h4>
-                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                    {caseStudies[activeCase].solution}
-                  </p>
-                </div>
-                
-                <div>
-                  <h4 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 sm:mb-3">Results</h4>
-                  <ul className="space-y-2">
-                    {caseStudies[activeCase].results.map((result, index) => (
-                      <li key={index} className="flex items-start text-sm sm:text-base text-gray-600">
-                        <div className="w-4 h-4 flex items-center justify-center mt-1 mr-3 flex-shrink-0">
-                          <i className="ri-check-line text-green-600"></i>
-                        </div>
-                        {result}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className="flex items-center text-sm sm:text-base text-gray-500">
-                  <div className="w-4 h-4 flex items-center justify-center mr-3 flex-shrink-0">
-                    <i className="ri-time-line"></i>
+        <div className="space-y-16">
+          {caseStudies.map((study, index) => (
+            <div
+              key={index}
+              className={`flex flex-col ${
+                index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+              } gap-12 items-center`}
+            >
+              {/* Image */}
+              <div className="lg:w-1/2">
+                <div className={`h-96 bg-gradient-to-br ${study.color} rounded-2xl flex items-center justify-center relative overflow-hidden`}>
+                  <div className="text-center text-white">
+                    <i className="ri-hospital-line text-6xl mb-4 opacity-80"></i>
+                    <h3 className="text-2xl font-bold">{study.client}</h3>
+                    <p className="text-lg opacity-90">{study.category}</p>
                   </div>
-                  Project Timeline: {caseStudies[activeCase].timeline}
+                  
+                  {/* Decorative elements */}
+                  <div className="absolute top-4 left-4 w-8 h-8 bg-white/20 rounded-full"></div>
+                  <div className="absolute top-8 right-8 w-6 h-6 bg-white/20 rounded-full"></div>
+                  <div className="absolute bottom-8 left-8 w-4 h-4 bg-white/20 rounded-full"></div>
+                  <div className="absolute bottom-4 right-4 w-10 h-10 bg-white/20 rounded-full"></div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="lg:w-1/2 space-y-6">
+                <div>
+                  <div className={`inline-block px-4 py-2 bg-gradient-to-r ${study.color} text-white rounded-full text-sm font-semibold mb-4`}>
+                    {study.category}
+                  </div>
+                  <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                    {study.title}
+                  </h3>
+                </div>
+
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Challenge</h4>
+                    <p className="text-gray-600">{study.challenge}</p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Solution</h4>
+                    <p className="text-gray-600">{study.solution}</p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-3">Results</h4>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {study.results.map((result, idx) => (
+                        <div key={idx} className="flex items-start">
+                          <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center mr-3 mt-0.5">
+                            <i className="ri-check-line text-white text-xs"></i>
+                          </div>
+                          <span className="text-gray-700 text-sm">{result}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="pt-4">
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold transition-colors"
+                  >
+                    Learn more about this project
+                    <i className="ri-arrow-right-line ml-2"></i>
+                  </a>
                 </div>
               </div>
             </div>
-            
-            <div className="mt-6 lg:mt-0">
-              <div className="relative">
-                <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl sm:rounded-3xl blur opacity-20"></div>
-                <img 
-                  src={caseStudies[activeCase].image}
-                  alt={caseStudies[activeCase].title}
-                  className="relative w-full rounded-2xl sm:rounded-3xl shadow-2xl object-cover object-top h-64 sm:h-80"
-                />
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
 
-        <div className="text-center mt-12 sm:mt-16">
-          <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:opacity-90 transition-all transform hover:scale-105 cursor-pointer whitespace-nowrap">
-            View More Case Studies
-          </button>
+        <div className="mt-20 text-center">
+          <div className="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">
+              Ready to Write Your Success Story?
+            </h3>
+            <p className="text-xl text-gray-600 mb-8">
+              Join the growing list of healthcare organizations that have transformed 
+              their operations with our expert consulting services.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="/contact"
+                className="inline-flex items-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transition-all transform hover:scale-105"
+              >
+                <i className="ri-rocket-line mr-2"></i>
+                Start Your Transformation
+              </a>
+              <a
+                href="/resources/case-studies"
+                className="inline-flex items-center border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-blue-50 transition-colors"
+              >
+                <i className="ri-book-open-line mr-2"></i>
+                View All Case Studies
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

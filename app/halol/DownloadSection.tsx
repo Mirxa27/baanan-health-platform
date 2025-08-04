@@ -1,177 +1,144 @@
 'use client';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function DownloadSection() {
-  const { t } = useTranslation('halol'); // Assuming 'halol' namespace for this component
-
-  const downloadOptions = [
-    {
-      platform: t('ios_app_store'),
-      description: t('download_for_iphone_ipad'),
-      icon: 'ri-apple-line',
-      color: 'bg-gray-900 hover:bg-gray-800',
-      subtitle: t('download_on_the')
-    },
-    {
-      platform: t('google_play'),
-      description: t('download_for_android_devices'),
-      icon: 'ri-google-play-line',
-      color: 'bg-gray-900 hover:bg-gray-800',
-      subtitle: t('get_it_on')
-    },
-    {
-      platform: t('web_portal'),
-      description: t('access_via_web_browser'),
-      icon: 'ri-global-line',
-      color: 'bg-gradient-to-r from-blue-600 to-purple-600 hover:opacity-90',
-      subtitle: t('access_via')
-    }
-  ];
-
-  const features = [
-    {
-      title: t('free_to_download'),
-      description: t('start_using_halol_no_cost'),
-      icon: 'ri-download-line'
-    },
-    {
-      title: t('secure_platform'),
-      description: t('hipaa_compliant_encrypted'),
-      icon: 'ri-shield-check-line'
-    },
-    {
-      title: t('support_24_7_short'),
-      description: t('round_the_clock_assistance'),
-      icon: 'ri-customer-service-line'
-    },
-    {
-      title: t('regular_updates'),
-      description: t('new_features_added_monthly'),
-      icon: 'ri-refresh-line'
-    }
-  ];
+  const { t } = useTranslation('halol');
+  const { data: session } = useSession();
 
   return (
-    <section
-      className="relative py-20 overflow-hidden"
-      style={{
-        backgroundImage: `linear-gradient(rgba(37, 99, 235, 0.9), rgba(147, 51, 234, 0.9)), url('https://readdy.ai/api/search-image?query=modern%20healthcare%20professionals%20using%20mobile%20technology%2C%20medical%20team%20with%20smartphones%20and%20tablets%2C%20hospital%20environment%20with%20digital%20healthcare%20solutions%2C%20collaborative%20healthcare%20technology%20use%2C%20professional%20medical%20setting&width=1920&height=600&seq=download-cta&orientation=landscape')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/90 to-purple-600/90"></div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center text-white">
-        <div className="mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-            {t('download_halol_app_start_today')}
+    <section className="py-20 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            Ready to Get
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+              Started?
+            </span>
           </h2>
-
-          <p className="text-xl mb-12 leading-relaxed opacity-90 max-w-3xl mx-auto">
-            {t('download_halol_description')}
+          
+          <p className="text-xl md:text-2xl text-blue-100 max-w-3xl mx-auto mb-12 leading-relaxed">
+            Join thousands of healthcare professionals who trust Halol for their 
+            medical device management needs. Access the platform now through your web browser.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-            {downloadOptions.map((option, index) => (
-              <button
-                key={index}
-                className={`flex items-center justify-center ${option.color} text-white px-8 py-4 rounded-2xl font-semibold transition-all transform hover:scale-105 cursor-pointer`}
-              >
-                <i className={`${option.icon} text-3xl mr-4`}></i>
-                <div className="text-left">
-                  <div className="text-sm opacity-80">{option.subtitle}</div>
-                  <div className="text-lg">{option.platform}</div>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
-          {features.map((feature, index) => (
-            <div key={index} className="text-center">
-              <div className="w-16 h-16 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full mx-auto mb-4">
-                <i className={`${feature.icon} text-2xl text-white`}></i>
+          {/* Platform Access Options */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-colors">
+              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <i className="ri-computer-line text-2xl text-white"></i>
               </div>
-              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-              <p className="text-white/80 text-sm">{feature.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="bg-white/10 backdrop-blur-sm rounded-3xl p-12 border border-white/20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="text-left">
-              <h3 className="text-3xl font-bold mb-6">
-                {t('everything_you_need_one_app')}
-              </h3>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <div className="w-6 h-6 flex items-center justify-center mr-4">
-                    <i className="ri-check-line text-xl text-green-400"></i>
-                  </div>
-                  <span>{t('medical_equipment_marketplace')}</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-6 h-6 flex items-center justify-center mr-4">
-                    <i className="ri-check-line text-xl text-green-400"></i>
-                  </div>
-                  <span>{t('real_time_health_monitoring')}</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-6 h-6 flex items-center justify-center mr-4">
-                    <i className="ri-check-line text-xl text-green-400"></i>
-                  </div>
-                  <span>{t('telehealth_consultations')}</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-6 h-6 flex items-center justify-center mr-4">
-                    <i className="ri-check-line text-xl text-green-400"></i>
-                  </div>
-                  <span>{t('comprehensive_maintenance_services')}</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-6 h-6 flex items-center justify-center mr-4">
-                    <i className="ri-check-line text-xl text-green-400"></i>
-                  </div>
-                  <span>{t('equipment_rental_import_services')}</span>
-                </div>
+              <h3 className="text-xl font-semibold mb-4">Web Platform</h3>
+              <p className="text-blue-200 mb-6">
+                Access the full platform features through your web browser on any device.
+              </p>
+              <div className="flex items-center justify-center space-x-2 text-sm text-blue-300">
+                <i className="ri-check-line"></i>
+                <span>Available Now</span>
               </div>
             </div>
 
-            <div className="text-center">
-              <img
-                src="https://readdy.ai/api/search-image?query=modern%20smartphone%20displaying%20Halol%20healthcare%20app%20interface%2C%20comprehensive%20healthcare%20management%20app%2C%20clean%20mobile%20app%20design%20with%20multiple%20features%2C%20professional%20healthcare%20mobile%20application%2C%20intuitive%20medical%20app%20interface&width=300&height=600&seq=final-app-screen&orientation=portrait"
-                alt="Halol App Final Screen"
-                className="w-64 h-auto mx-auto rounded-3xl shadow-2xl"
-              />
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-colors">
+              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <i className="ri-smartphone-line text-2xl text-white"></i>
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Mobile Experience</h3>
+              <p className="text-blue-200 mb-6">
+                Optimized mobile web experience for on-the-go access and management.
+              </p>
+              <div className="flex items-center justify-center space-x-2 text-sm text-blue-300">
+                <i className="ri-check-line"></i>
+                <span>Responsive Design</span>
+              </div>
+            </div>
+
+            <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 hover:bg-white/20 transition-colors opacity-75">
+              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <i className="ri-download-cloud-line text-2xl text-white"></i>
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Native Apps</h3>
+              <p className="text-blue-200 mb-6">
+                Dedicated mobile apps for iOS and Android coming soon with enhanced features.
+              </p>
+              <div className="flex items-center justify-center space-x-2 text-sm text-yellow-400">
+                <i className="ri-time-line"></i>
+                <span>Coming Soon</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="mt-16 text-center">
-          <h4 className="text-2xl font-bold mb-4">{t('need_help_getting_started')}</h4>
-          <p className="text-lg mb-8 opacity-90">
-            {t('support_team_ready_to_help')}
-          </p>
+          {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-105 cursor-pointer whitespace-nowrap"
-            >
-              {t('contact_support')}
-            </Link>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all transform hover:scale-105 cursor-pointer whitespace-nowrap">
-              {t('view_tutorial')}
-            </button>
-            <Link
-              href="/consultancy"
-              className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-all transform hover:scale-105 cursor-pointer whitespace-nowrap"
-            >
-              {t('get_professional_setup')}
-            </Link>
+            {session ? (
+              <Link
+                href="/halol/dashboard"
+                className="bg-white text-blue-900 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transition-all transform hover:scale-105"
+              >
+                <i className="ri-dashboard-line mr-2"></i>
+                Go to Dashboard
+              </Link>
+            ) : (
+              <>
+                <Link
+                  href="/halol/auth/signup"
+                  className="bg-white text-blue-900 px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg transition-all transform hover:scale-105"
+                >
+                  <i className="ri-user-add-line mr-2"></i>
+                  Create Account
+                </Link>
+                <Link
+                  href="/halol/auth/signin"
+                  className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white hover:text-blue-900 transition-all transform hover:scale-105"
+                >
+                  <i className="ri-login-box-line mr-2"></i>
+                  Sign In
+                </Link>
+              </>
+            )}
+          </div>
+
+          {/* Platform Statistics */}
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-blue-300 mb-2">10,000+</div>
+              <div className="text-blue-200 text-sm">Medical Devices</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-purple-300 mb-2">500+</div>
+              <div className="text-blue-200 text-sm">Healthcare Facilities</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-green-300 mb-2">99.9%</div>
+              <div className="text-blue-200 text-sm">Platform Uptime</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-yellow-300 mb-2">24/7</div>
+              <div className="text-blue-200 text-sm">Support Available</div>
+            </div>
+          </div>
+
+          {/* Security & Compliance */}
+          <div className="mt-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold mb-6">Secure & Compliant</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm">
+              <div className="flex items-center space-x-2">
+                <i className="ri-shield-check-line text-green-400 text-lg"></i>
+                <span>HIPAA Compliant</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <i className="ri-lock-2-line text-blue-400 text-lg"></i>
+                <span>256-bit Encryption</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <i className="ri-cloud-line text-purple-400 text-lg"></i>
+                <span>Cloud Backup</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <i className="ri-award-line text-yellow-400 text-lg"></i>
+                <span>ISO Certified</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
