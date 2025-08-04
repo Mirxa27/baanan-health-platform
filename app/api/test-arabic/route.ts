@@ -7,7 +7,9 @@ export async function GET(request: NextRequest) {
   const namespace = searchParams.get('namespace') || 'common';
   
   try {
-    const translationData = translations[locale as 'en' | 'ar']?.[namespace as keyof typeof translations.en];
+    const translationData = translations[locale as 'en' | 'ar']?.[
+      namespace as keyof typeof translations.en
+    ] as Record<string, string> | undefined;
     
     return NextResponse.json({
       success: true,
