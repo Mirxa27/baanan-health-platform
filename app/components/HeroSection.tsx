@@ -33,9 +33,10 @@ export default function HeroSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 items-center">
-          <div className="transform transition-all duration-1000 translate-x-0 opacity-100 animate-fade-in-left">
+          <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
             <div className="mb-4 sm:mb-6">
-              <span className="inline-block px-3 sm:px-4 py-1 sm:py-2 bg-blue-100 text-blue-600 rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+              <span className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-full text-sm font-medium mb-4 shadow-lg hover:shadow-xl transition-all transform hover:scale-105">
+                <i className="ri-lightbulb-line mr-2"></i>
                 {t('innovation_tag')}
               </span>
             </div>
