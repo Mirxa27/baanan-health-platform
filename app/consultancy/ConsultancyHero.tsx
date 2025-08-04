@@ -1,9 +1,6 @@
-'use client';
 import Link from 'next/link';
-import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function ConsultancyHero() {
-  const { t } = useTranslation('consultancy');
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-indigo-900 via-blue-900 to-purple-900 text-white overflow-hidden">
