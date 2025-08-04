@@ -98,14 +98,19 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="transform transition-all duration-1000 delay-300 translate-x-0 opacity-100 animate-fade-in-right">
+          <div className={`transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
             <div className="relative">
-              <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl sm:rounded-3xl blur opacity-20 animate-pulse"></div>
-              <div className="relative bg-white/20 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/30">
+              {/* Floating background elements */}
+              <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full opacity-70 animate-float"></div>
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-r from-green-400 to-teal-400 rounded-full opacity-70 animate-float" style={{animationDelay: '1s'}}></div>
+
+              <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl sm:rounded-3xl blur opacity-20 animate-pulse-glow"></div>
+              <div className="relative bg-white/90 backdrop-blur-lg rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-white/30 shadow-2xl">
+                <h3 className="text-xl font-bold text-gray-800 mb-6 text-center">{t('smart_devices')}</h3>
                 <div className="grid grid-cols-2 gap-4 sm:gap-6">
-                  <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center transform hover:scale-105 transition-all cursor-pointer">
-                    <div className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center bg-blue-100 rounded-full mx-auto mb-3 sm:mb-4">
-                      <i className="ri-smartphone-line text-lg sm:text-2xl text-blue-600"></i>
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center transform hover:scale-105 transition-all cursor-pointer group hover:shadow-lg">
+                    <div className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                      <i className="ri-smartphone-line text-lg sm:text-2xl text-white"></i>
                     </div>
                     <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">{t('smart_devices')}</h3>
                     <p className="text-xs sm:text-sm text-gray-600">{t('ai_powered_health_monitoring')}</p>
