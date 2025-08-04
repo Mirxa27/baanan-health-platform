@@ -4,127 +4,236 @@ import { useTranslation } from '../hooks/useTranslation.simple';
 
 export default function Footer() {
   const { t } = useTranslation('common');
+
+  const productCategories = [
+    { name: 'Medical Imaging', href: '/products/imaging-equipment' },
+    { name: 'Patient Monitoring', href: '/products/patient-monitoring' },
+    { name: 'Respiratory Equipment', href: '/products/respiratory-devices' },
+    { name: 'Surgical Instruments', href: '/products/surgical-instruments' },
+  ];
+
+  const services = [
+    { name: 'Medical Device Marketplace', href: '/halol' },
+    { name: 'Healthcare Consulting', href: '/consultancy' },
+    { name: 'Equipment Rental', href: '/halol/dashboard?tab=rentals' },
+    { name: 'Maintenance Services', href: '/halol/dashboard?tab=maintenance' },
+  ];
+
+  const resources = [
+    { name: 'Healthcare Blog', href: '/resources/blog' },
+    { name: 'Research Papers', href: '/resources/research-papers' },
+    { name: 'News & Updates', href: '/resources/news-updates' },
+    { name: 'Case Studies', href: '/resources/case-studies' },
+  ];
+
+  const company = [
+    { name: t('about_us_title'), href: '/about' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Press & Media', href: '/press' },
+    { name: 'Investor Relations', href: '/investors' },
+  ];
+
+  const support = [
+    { name: t('contact_title'), href: '/contact' },
+    { name: 'Help Center', href: '/help' },
+    { name: 'API Documentation', href: '/api-docs' },
+    { name: 'System Status', href: '/status' },
+  ];
+
   return (
-    <>
-      {/* Desktop Footer */}
-      <footer className="hidden md:block bg-gradient-to-br from-gray-900 to-gray-800 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div>
-              <h3 className="text-2xl font-bold mb-6" style={{ fontFamily: 'Pacifico, serif' }}>
-                Baanan
-              </h3>
-              <p className="text-gray-300 mb-6 leading-relaxed">
-                {t('footer_description')}
+    <footer className="bg-gray-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main Footer Content */}
+        <div className="py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+            {/* Company Info */}
+            <div className="lg:col-span-2">
+              <Link href="/" className="flex items-center space-x-3 mb-6">
+                <img
+                  src="/baanan-logo-white.png"
+                  alt="Baanan Healthcare Solutions"
+                  className="h-12 w-auto"
+                />
+                <div>
+                  <span className="text-2xl font-bold">Baanan</span>
+                  <span className="block text-sm text-gray-400">Healthcare Solutions</span>
+                </div>
+              </Link>
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                Leading healthcare technology platform in the GCC, transforming medical device management 
+                through innovation, quality, and comprehensive solutions.
               </p>
+              
+              {/* Social Media */}
               <div className="flex space-x-4">
-                <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-full cursor-pointer hover:bg-blue-700 transition-colors">
-                  <i className="ri-twitter-line text-lg"></i>
-                </div>
-                <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-full cursor-pointer hover:bg-blue-700 transition-colors">
-                  <i className="ri-linkedin-line text-lg"></i>
-                </div>
-                <div className="w-10 h-10 flex items-center justify-center bg-blue-600 rounded-full cursor-pointer hover:bg-blue-700 transition-colors">
-                  <i className="ri-instagram-line text-lg"></i>
-                </div>
+                <a
+                  href="https://linkedin.com/company/baanan-healthcare"
+                  className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <i className="ri-linkedin-fill text-lg"></i>
+                </a>
+                <a
+                  href="https://twitter.com/baanan_health"
+                  className="w-10 h-10 bg-gray-800 hover:bg-blue-400 rounded-lg flex items-center justify-center transition-colors"
+                  aria-label="Twitter"
+                >
+                  <i className="ri-twitter-fill text-lg"></i>
+                </a>
+                <a
+                  href="https://youtube.com/@baananhealthcare"
+                  className="w-10 h-10 bg-gray-800 hover:bg-red-600 rounded-lg flex items-center justify-center transition-colors"
+                  aria-label="YouTube"
+                >
+                  <i className="ri-youtube-fill text-lg"></i>
+                </a>
+                <a
+                  href="https://instagram.com/baananhealthcare"
+                  className="w-10 h-10 bg-gray-800 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors"
+                  aria-label="Instagram"
+                >
+                  <i className="ri-instagram-fill text-lg"></i>
+                </a>
               </div>
             </div>
 
+            {/* Product Categories */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">{t('quick_links')}</h4>
+              <h3 className="text-lg font-semibold mb-6">Products</h3>
               <ul className="space-y-3">
-                <li><Link href="/about" className="text-gray-300 hover:text-white transition-colors cursor-pointer">{t('about_us_title')}</Link></li>
-                <li><Link href="/products" className="text-gray-300 hover:text-white transition-colors cursor-pointer">{t('products_title')}</Link></li>
-                <li><Link href="/consultancy" className="text-gray-300 hover:text-white transition-colors cursor-pointer">{t('consultancy')}</Link></li>
-                <li><Link href="/resources" className="text-gray-300 hover:text-white transition-colors cursor-pointer">{t('resources')}</Link></li>
+                {productCategories.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
+            {/* Services */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">{t('halol_platform_footer')}</h4>
+              <h3 className="text-lg font-semibold mb-6">Services</h3>
               <ul className="space-y-3">
-                <li><Link href="/halol/dashboard" className="text-gray-300 hover:text-white transition-colors cursor-pointer">{t('device_catalog_footer')}</Link></li>
-                <li><Link href="/halol/dashboard?tab=orders" className="text-gray-300 hover:text-white transition-colors cursor-pointer">{t('purchase_devices')}</Link></li>
-                <li><Link href="/halol/dashboard?tab=rentals" className="text-gray-300 hover:text-white transition-colors cursor-pointer">{t('rent_equipment')}</Link></li>
-                <li><Link href="/halol/dashboard?tab=maintenance" className="text-gray-300 hover:text-white transition-colors cursor-pointer">{t('maintenance')}</Link></li>
-                <li><Link href="/halol/dashboard?tab=support" className="text-gray-300 hover:text-white transition-colors cursor-pointer">{t('customer_support_footer')}</Link></li>
+                {services.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
+            {/* Resources */}
             <div>
-              <h4 className="text-lg font-semibold mb-6">{t('contact_info')}</h4>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <div className="w-5 h-5 flex items-center justify-center mr-3">
-                    <i className="ri-mail-line text-blue-400"></i>
-                  </div>
-                  <span className="text-gray-300">info@baanan.com</span>
+              <h3 className="text-lg font-semibold mb-6">Resources</h3>
+              <ul className="space-y-3">
+                {resources.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Support */}
+            <div>
+              <h3 className="text-lg font-semibold mb-6">Support</h3>
+              <ul className="space-y-3">
+                {support.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      href={item.href}
+                      className="text-gray-400 hover:text-white transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              
+              {/* Contact Info */}
+              <div className="mt-6 pt-6 border-t border-gray-800">
+                <div className="flex items-center space-x-3 mb-3">
+                  <i className="ri-phone-line text-blue-400"></i>
+                  <a
+                    href="tel:+966564406725"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    +966 564 406 725
+                  </a>
                 </div>
-                <div className="flex items-center">
-                  <div className="w-5 h-5 flex items-center justify-center mr-3">
-                    <i className="ri-phone-line text-blue-400"></i>
-                  </div>
-                  <span className="text-gray-300">+966564406725</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-5 h-5 flex items-center justify-center mr-3">
-                    <i className="ri-map-pin-line text-blue-400"></i>
-                  </div>
-                  <span className="text-gray-300">Saudi Arabia</span>
+                <div className="flex items-center space-x-3">
+                  <i className="ri-mail-line text-blue-400"></i>
+                  <a
+                    href="mailto:info@baanan.com"
+                    className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    info@baanan.com
+                  </a>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="border-t border-gray-700 pt-8 mt-12">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-gray-400 text-sm">
-                © 2024 Baanan. {t('all_rights_reserved')}. | {t('ceo_footer')}
+        {/* Newsletter Signup */}
+        <div className="py-8 border-t border-gray-800">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="mb-4 md:mb-0">
+              <h3 className="text-lg font-semibold mb-2">Stay Updated</h3>
+              <p className="text-gray-400">
+                Get the latest healthcare technology insights and product updates.
               </p>
-              <div className="flex space-x-6 mt-4 md:mt-0">
-                <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer">{t('privacy_policy')}</Link>
-                <Link href="#" className="text-gray-400 hover:text-white text-sm transition-colors cursor-pointer">{t('terms_of_service')}</Link>
-              </div>
+            </div>
+            <div className="flex w-full md:w-auto">
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 md:w-64 px-4 py-3 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:border-blue-500 text-white placeholder-gray-400"
+              />
+              <button className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-r-lg transition-colors">
+                Subscribe
+              </button>
             </div>
           </div>
         </div>
-      </footer>
 
-      {/* Mobile Fixed Footer Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-md border-t border-gray-200 z-50">
-        <div className="flex items-center justify-around py-2">
-          <Link href="/" className="flex flex-col items-center p-2 cursor-pointer">
-            <div className="w-6 h-6 flex items-center justify-center">
-              <i className="ri-home-line text-xl text-gray-600"></i>
+        {/* Bottom Footer */}
+        <div className="py-6 border-t border-gray-800">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="text-gray-400 text-sm mb-4 md:mb-0">
+              © 2024 Baanan Healthcare Solutions. All rights reserved.
             </div>
-            <span className="text-xs text-gray-600 mt-1">{t('home')}</span>
-          </Link>
-          <Link href="/products" className="flex flex-col items-center p-2 cursor-pointer">
-            <div className="w-6 h-6 flex items-center justify-center">
-              <i className="ri-heart-pulse-line text-xl text-gray-600"></i>
+            <div className="flex space-x-6 text-sm">
+              <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-gray-400 hover:text-white transition-colors">
+                Terms of Service
+              </Link>
+              <Link href="/cookies" className="text-gray-400 hover:text-white transition-colors">
+                Cookie Policy
+              </Link>
+              <Link href="/accessibility" className="text-gray-400 hover:text-white transition-colors">
+                Accessibility
+              </Link>
             </div>
-            <span className="text-xs text-gray-600 mt-1">{t('products_title')}</span>
-          </Link>
-          <Link href="/halol" className="flex flex-col items-center p-2 cursor-pointer">
-            <div className="w-8 h-8 flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-full">
-              <i className="ri-smartphone-line text-lg text-white"></i>
-            </div>
-            <span className="text-xs text-blue-600 mt-1 font-medium">{t('halol_platform')}</span>
-          </Link>
-          <Link href="/consultancy" className="flex flex-col items-center p-2 cursor-pointer">
-            <div className="w-6 h-6 flex items-center justify-center">
-              <i className="ri-user-heart-line text-xl text-gray-600"></i>
-            </div>
-            <span className="text-xs text-gray-600 mt-1">{t('consultancy')}</span>
-          </Link>
-          <Link href="/contact" className="flex flex-col items-center p-2 cursor-pointer">
-            <div className="w-6 h-6 flex items-center justify-center">
-              <i className="ri-customer-service-line text-xl text-gray-600"></i>
-            </div>
-            <span className="text-xs text-gray-600 mt-1">{t('contact_title')}</span>
-          </Link>
+          </div>
         </div>
-      </nav>
-    </>
+      </div>
+    </footer>
   );
 }
