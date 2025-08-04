@@ -1,4 +1,44 @@
-import { Order, OrderStatus } from '../../domain/entities/order';
+import { Order } from '../../domain/entities/order';
+
+export interface CreateOrderData {
+  customerId: string;
+  items: Array<{
+    deviceId: string;
+    deviceName: string;
+    quantity: number;
+    unitPrice: {
+      amount: number;
+      currency: string;
+    };
+  }>;
+  shippingAddress: {
+    name: string;
+    street: string;
+    city: string;
+    state: string;
+    postalCode: string;
+    country: string;
+    phone?: string;
+  };
+  taxRate?: number;
+}
+
+export interface UpdateOrderData {
+  status?: 'PENDING' | 'CONFIRMED' | 'PROCESSING' | 'SHIPPED' | 'DELIVERED' | 'CANCELLED' | 'REFUNDED';
+  trackingNumber?: string;
+  notes?: string;
+}
+
+export interface OrderFilters {
+  customerId?: string;
+  status?: string[];
+  dateRange?: {
+    start: Date;
+    end: Date;
+  };
+  minAmount?: number;
+  maxAmount?: number;
+}
 
 export interface OrderRepository {
   /**
@@ -12,7 +52,23 @@ export interface OrderRepository {
   findByCustomerId(
     customerId: string,
     options?: {
-      status?: OrderStatus['_type'];
+      status?: string[];
+      limit?: number;
+      offset?: number;
+      sortBy?: 'createdAt' | 'totalAmount' | 'status';
+      sortOrder?: 'asc' | 'desc';
+    }
+  ): Promise<{
+    orders: Order[];
+    total: number;
+  }>;
+
+  /**
+   * Find orders with optional filtering and pagination
+   */
+  find(
+    filters?: OrderFilters,
+    options?: {
       limit?: number;
       offset?: number;
       sortBy?: 'createdAt' | 'totalAmount' | 'status';
@@ -27,7 +83,7 @@ export interface OrderRepository {
    * Find orders by status
    */
   findByStatus(
-    status: OrderStatus['_type'],
+    status: string,
     options?: {
       limit?: number;
       offset?: number;
@@ -44,7 +100,7 @@ export interface OrderRepository {
     startDate: Date,
     endDate: Date,
     options?: {
-      status?: OrderStatus['_type'];
+      status?: string[];
       customerId?: string;
       limit?: number;
       offset?: number;
@@ -65,7 +121,17 @@ export interface OrderRepository {
   findByTrackingNumber(trackingNumber: string): Promise<Order | null>;
 
   /**
-   * Save a new order or update an existing one
+   * Create a new order
+   */
+  create(orderData: CreateOrderData): Promise<Order>;
+
+  /**
+   * Update an existing order
+   */
+  update(id: string, updateData: UpdateOrderData): Promise<Order>;
+
+  /**
+   * Save an order (create or update)
    */
   save(order: Order): Promise<Order>;
 
