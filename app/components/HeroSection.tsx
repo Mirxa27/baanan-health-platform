@@ -112,29 +112,29 @@ export default function HeroSection() {
                     <div className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
                       <i className="ri-smartphone-line text-lg sm:text-2xl text-white"></i>
                     </div>
-                    <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">{t('smart_devices')}</h3>
+                    <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">Smart Devices</h3>
                     <p className="text-xs sm:text-sm text-gray-600">{t('ai_powered_health_monitoring')}</p>
                   </div>
 
-                  <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center transform hover:scale-105 transition-all cursor-pointer">
-                    <div className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center bg-purple-100 rounded-full mx-auto mb-3 sm:mb-4">
-                      <i className="ri-brain-line text-lg sm:text-2xl text-purple-600"></i>
+                  <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center transform hover:scale-105 transition-all cursor-pointer group hover:shadow-lg">
+                    <div className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center bg-gradient-to-r from-purple-500 to-purple-600 rounded-full mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                      <i className="ri-brain-line text-lg sm:text-2xl text-white"></i>
                     </div>
                     <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">{t('ai_analytics')}</h3>
                     <p className="text-xs sm:text-sm text-gray-600">{t('intelligent_health_insights')}</p>
                   </div>
 
-                  <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center transform hover:scale-105 transition-all cursor-pointer">
-                    <div className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center bg-green-100 rounded-full mx-auto mb-3 sm:mb-4">
-                      <i className="ri-heart-pulse-line text-lg sm:text-2xl text-green-600"></i>
+                  <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center transform hover:scale-105 transition-all cursor-pointer group hover:shadow-lg">
+                    <div className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center bg-gradient-to-r from-green-500 to-green-600 rounded-full mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                      <i className="ri-heart-pulse-line text-lg sm:text-2xl text-white"></i>
                     </div>
                     <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">{t('telehealth')}</h3>
                     <p className="text-xs sm:text-sm text-gray-600">{t('remote_consultations')}</p>
                   </div>
 
-                  <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center transform hover:scale-105 transition-all cursor-pointer">
-                    <div className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center bg-orange-100 rounded-full mx-auto mb-3 sm:mb-4">
-                      <i className="ri-robot-line text-lg sm:text-2xl text-orange-600"></i>
+                  <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center transform hover:scale-105 transition-all cursor-pointer group hover:shadow-lg">
+                    <div className="w-10 sm:w-12 h-10 sm:h-12 flex items-center justify-center bg-gradient-to-r from-orange-500 to-orange-600 rounded-full mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                      <i className="ri-robot-line text-lg sm:text-2xl text-white"></i>
                     </div>
                     <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1 sm:mb-2">{t('robotics')}</h3>
                     <p className="text-xs sm:text-sm text-gray-600">{t('automated_physiotherapy')}</p>
