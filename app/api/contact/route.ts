@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     console.log('Contact form submission:', {
       ...validatedData,
       timestamp: new Date().toISOString(),
-      ip: request.ip || 'unknown',
+      ip: request.headers.get('x-forwarded-for') || 'unknown',
       userAgent: request.headers.get('user-agent') || 'unknown'
     });
     

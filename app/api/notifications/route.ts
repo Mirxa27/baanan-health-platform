@@ -3,6 +3,16 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '../../../lib/auth';
 import { prisma } from '../../../lib/db';
 
+type Notification = {
+  id: string;
+  type: string;
+  title: string;
+  message: string;
+  timestamp: Date;
+  priority: 'high' | 'medium' | 'low';
+  read: boolean;
+};
+
 export async function GET(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
@@ -18,7 +28,7 @@ export async function GET(request: NextRequest) {
     const type = searchParams.get('type');
 
     // Get recent notifications based on user role and preferences
-    const notifications = [];
+    const notifications: Notification[] = [];
 
     if (session.user.role === 'ADMIN') {
       // Admin notifications
