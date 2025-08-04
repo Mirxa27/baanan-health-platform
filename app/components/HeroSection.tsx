@@ -41,10 +41,11 @@ export default function HeroSection() {
               </span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
+            <h1 className={`text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               {t('transforming_healthcare_title_part1')}
-              <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> {t('transforming_healthcare_title_part2')}</span>
-              <br />{t('transforming_healthcare_title_part3')}
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient-x"> {t('transforming_healthcare_title_part2')}</span>
+              <br />
+              <span className="text-gray-700">{t('transforming_healthcare_title_part3')}</span>
             </h1>
 
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed max-w-lg">
