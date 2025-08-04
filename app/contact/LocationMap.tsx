@@ -1,82 +1,196 @@
 'use client';
+import { useState } from 'react';
 
 export default function LocationMap() {
+  const [activeOffice, setActiveOffice] = useState(0);
+
+  const offices = [
+    {
+      name: 'Riyadh Headquarters',
+      address: 'King Fahd District, Riyadh 12345, Saudi Arabia',
+      phone: '+966 564 406 725',
+      email: 'riyadh@baanan.com',
+      hours: 'Sunday - Thursday: 8 AM - 6 PM',
+      coordinates: { lat: 24.7136, lng: 46.6753 }
+    },
+    {
+      name: 'Jeddah Office',
+      address: 'Al Hamra District, Jeddah 21414, Saudi Arabia',
+      phone: '+966 564 406 726',
+      email: 'jeddah@baanan.com',
+      hours: 'Sunday - Thursday: 8 AM - 6 PM',
+      coordinates: { lat: 21.4858, lng: 39.1925 }
+    },
+    {
+      name: 'Dammam Office',
+      address: 'Al Faisaliyah District, Dammam 32412, Saudi Arabia',
+      phone: '+966 564 406 727',
+      email: 'dammam@baanan.com',
+      hours: 'Sunday - Thursday: 8 AM - 6 PM',
+      coordinates: { lat: 26.4282, lng: 50.1044 }
+    }
+  ];
+
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-20 bg-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">
-            Visit Our
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Locations</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Our Locations
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Find us across Saudi Arabia with strategically located offices and service centers to serve you better.
+          <p className="text-xl text-gray-600">
+            Visit us at any of our offices across Saudi Arabia
           </p>
         </div>
 
-        <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-lg border border-gray-100">
-          <div className="aspect-video rounded-2xl overflow-hidden">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3624.1!2d46.6753!3d24.7136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2sRiyadh%20Saudi%20Arabia!5e0!3m2!1sen!2s!4v1698765432100!5m2!1sen!2s"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Baanan Headquarters Location"
-            ></iframe>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Office Cards */}
+          <div className="lg:col-span-1 space-y-4">
+            {offices.map((office, index) => (
+              <div
+                key={index}
+                className={`bg-white rounded-xl shadow-lg border-2 cursor-pointer transition-all transform hover:scale-105 ${
+                  activeOffice === index 
+                    ? 'border-blue-500 ring-2 ring-blue-200' 
+                    : 'border-gray-200 hover:border-blue-300'
+                }`}
+                onClick={() => setActiveOffice(index)}
+              >
+                <div className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      {office.name}
+                    </h3>
+                    {activeOffice === index && (
+                      <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+                    )}
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-start space-x-3">
+                      <i className="ri-map-pin-line text-gray-400 mt-1"></i>
+                      <p className="text-gray-600 text-sm">{office.address}</p>
+                    </div>
+                    
+                    <div className="flex items-center space-x-3">
+                      <i className="ri-phone-line text-gray-400"></i>
+                      <a 
+                        href={`tel:${office.phone}`}
+                        className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                      >
+                        {office.phone}
+                      </a>
+                    </div>
+                    
+                    <div className="flex items-center space-x-3">
+                      <i className="ri-mail-line text-gray-400"></i>
+                      <a 
+                        href={`mailto:${office.email}`}
+                        className="text-blue-600 hover:text-blue-700 text-sm font-medium"
+                      >
+                        {office.email}
+                      </a>
+                    </div>
+                    
+                    <div className="flex items-center space-x-3">
+                      <i className="ri-time-line text-gray-400"></i>
+                      <p className="text-gray-600 text-sm">{office.hours}</p>
+                    </div>
+                  </div>
+
+                  <div className="mt-4 pt-4 border-t border-gray-100">
+                    <button className="text-blue-600 hover:text-blue-700 text-sm font-medium flex items-center">
+                      <i className="ri-navigation-line mr-2"></i>
+                      Get Directions
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-          
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center p-6 bg-white rounded-2xl shadow-md border border-gray-100">
-              <div className="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-full mx-auto mb-4">
-                <i className="ri-building-line text-xl text-blue-600"></i>
+
+          {/* Map Placeholder */}
+          <div className="lg:col-span-2">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden h-96 lg:h-full">
+              <div className="relative w-full h-full bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center">
+                {/* Map placeholder - would integrate with Google Maps or similar */}
+                <div className="text-center">
+                  <div className="w-24 h-24 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i className="ri-map-2-line text-4xl text-white"></i>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {offices[activeOffice].name}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    {offices[activeOffice].address}
+                  </p>
+                  <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    <i className="ri-external-link-line mr-2"></i>
+                    Open in Maps
+                  </button>
+                </div>
+
+                {/* Decorative elements */}
+                <div className="absolute top-4 left-4 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                  <i className="ri-map-pin-fill text-white"></i>
+                </div>
+                <div className="absolute top-12 right-8 w-6 h-6 bg-green-500 rounded-full"></div>
+                <div className="absolute bottom-8 left-12 w-4 h-4 bg-yellow-500 rounded-full"></div>
+                <div className="absolute bottom-12 right-4 w-5 h-5 bg-purple-500 rounded-full"></div>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Riyadh Headquarters</h3>
-              <p className="text-gray-600 text-sm">
-                King Fahd Road, Riyadh<br/>
-                Saudi Arabia 11564
-              </p>
-            </div>
-            
-            <div className="text-center p-6 bg-white rounded-2xl shadow-md border border-gray-100">
-              <div className="w-12 h-12 flex items-center justify-center bg-purple-100 rounded-full mx-auto mb-4">
-                <i className="ri-map-pin-line text-xl text-purple-600"></i>
+
+              {/* Quick Actions */}
+              <div className="bg-white p-4 border-t border-gray-200">
+                <div className="flex justify-between items-center">
+                  <div className="text-sm text-gray-600">
+                    Need directions to {offices[activeOffice].name}?
+                  </div>
+                  <div className="flex space-x-2">
+                    <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                      Google Maps
+                    </button>
+                    <span className="text-gray-300">|</span>
+                    <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+                      Apple Maps
+                    </button>
+                  </div>
+                </div>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Jeddah Office</h3>
-              <p className="text-gray-600 text-sm">
-                Corniche Road, Jeddah<br/>
-                Saudi Arabia 21589
-              </p>
-            </div>
-            
-            <div className="text-center p-6 bg-white rounded-2xl shadow-md border border-gray-100">
-              <div className="w-12 h-12 flex items-center justify-center bg-green-100 rounded-full mx-auto mb-4">
-                <i className="ri-service-line text-xl text-green-600"></i>
-              </div>
-              <h3 className="font-bold text-gray-900 mb-2">Service Centers</h3>
-              <p className="text-gray-600 text-sm">
-                Dammam, Mecca, Medina<br/>
-                Nationwide Coverage
-              </p>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-white/50">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Need Directions?</h3>
-            <p className="text-gray-600 mb-6">
-              Contact our team for detailed directions to any of our locations or to schedule an in-person consultation.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-all transform hover:scale-105 cursor-pointer whitespace-nowrap">
-                Get Directions
-              </button>
-              <button className="border-2 border-blue-600 text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-600 hover:text-white transition-all transform hover:scale-105 cursor-pointer whitespace-nowrap">
-                Schedule Visit
-              </button>
+        {/* Additional Information */}
+        <div className="mt-16 bg-white rounded-xl shadow-lg p-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i className="ri-car-line text-2xl text-blue-600"></i>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Parking Available</h3>
+              <p className="text-gray-600 text-sm">
+                Free parking available at all locations. Visitor spaces clearly marked.
+              </p>
+            </div>
+
+            <div>
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i className="ri-wheelchair-line text-2xl text-green-600"></i>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Accessibility</h3>
+              <p className="text-gray-600 text-sm">
+                All offices are wheelchair accessible with elevators and ramps.
+              </p>
+            </div>
+
+            <div>
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i className="ri-calendar-check-line text-2xl text-purple-600"></i>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">Appointments</h3>
+              <p className="text-gray-600 text-sm">
+                Schedule a visit in advance for personalized consultation and demos.
+              </p>
             </div>
           </div>
         </div>
