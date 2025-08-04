@@ -1,8 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 import { DeviceApplicationService } from '../../core/application/services/device-application-service';
+import { OrderApplicationService } from '../../core/application/services/order-application-service';
 import { PrismaDeviceRepository } from '../database/repositories/prisma-device-repository';
+import { PrismaOrderRepository } from '../database/repositories/prisma-order-repository';
 import { DeviceService } from '../../core/interfaces/services/device-service';
 import { DeviceRepository } from '../../core/interfaces/repositories/device-repository';
+import { OrderRepository } from '../../core/interfaces/repositories/order-repository';
 import { config } from '../config/app-config';
 import { logger } from '../../shared/logging/logger';
 
@@ -55,11 +58,30 @@ class DIContainer {
     return this.services.get(key);
   }
 
+  public getOrderRepository(): OrderRepository {
+    const key = 'OrderRepository';
+    if (!this.services.has(key)) {
+      const prisma = this.getPrismaClient();
+      this.services.set(key, new PrismaOrderRepository(prisma));
+    }
+    return this.services.get(key);
+  }
+
   public getDeviceService(): DeviceService {
     const key = 'DeviceService';
     if (!this.services.has(key)) {
       const deviceRepository = this.getDeviceRepository();
       this.services.set(key, new DeviceApplicationService(deviceRepository));
+    }
+    return this.services.get(key);
+  }
+
+  public getOrderService(): OrderApplicationService {
+    const key = 'OrderService';
+    if (!this.services.has(key)) {
+      const orderRepository = this.getOrderRepository();
+      const deviceRepository = this.getDeviceRepository();
+      this.services.set(key, new OrderApplicationService(orderRepository, deviceRepository));
     }
     return this.services.get(key);
   }
@@ -95,4 +117,11 @@ export const container = DIContainer.getInstance();
 // Convenience getters
 export const getDeviceService = (): DeviceService => container.getDeviceService();
 export const getDeviceRepository = (): DeviceRepository => container.getDeviceRepository();
+export const getOrderService = (): OrderApplicationService => container.getOrderService();
+export const getOrderRepository = (): OrderRepository => container.getOrderRepository();
 export const getPrismaClient = (): PrismaClient => container.getPrismaClient();
+
+// Placeholder user service getter (would need to implement UserService)
+export const getUserService = (): any => {
+  throw new Error('UserService not yet implemented');
+};
