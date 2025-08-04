@@ -1,7 +1,8 @@
-
 'use client';
+import { useTranslation } from '../../hooks/useTranslation.simple';
 
 export default function AboutHero() {
+  const { t } = useTranslation('about');
   return (
     <section 
       className="relative py-16 sm:py-20 lg:py-32 overflow-hidden"
