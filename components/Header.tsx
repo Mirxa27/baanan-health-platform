@@ -40,20 +40,19 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3 group">
+            <Link href="/" className="flex items-center group">
               <img
                 src="/baanan-logo.png"
                 alt="Baanan Healthcare Solutions"
-                className="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+                className="w-auto object-contain transition-transform group-hover:scale-105"
                 style={{
                   filter: 'brightness(1.1) contrast(1.1)',
-                  imageRendering: 'crisp-edges'
+                  imageRendering: 'crisp-edges',
+                  height: '68px',
+                  paddingTop: '1px',
+                  margin: '24px 0 0 -3px'
                 }}
               />
-              <div className="hidden sm:block">
-                <span className="text-xl font-bold text-gray-900">Baanan</span>
-                <span className="block text-xs text-gray-500 -mt-1">Healthcare Solutions</span>
-              </div>
             </Link>
 
             {/* Desktop Navigation */}
