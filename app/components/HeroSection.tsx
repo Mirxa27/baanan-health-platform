@@ -48,22 +48,28 @@ export default function HeroSection() {
               <span className="text-gray-700">{t('transforming_healthcare_title_part3')}</span>
             </h1>
 
-            <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed max-w-lg">
+            <p className={`text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8 leading-relaxed max-w-lg transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               {t('transforming_healthcare_description')}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12">
+            <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12 transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
               <Link
                 href="/halol"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:opacity-90 transition-all transform hover:scale-105 text-center cursor-pointer whitespace-nowrap"
+                className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:shadow-2xl transition-all transform hover:scale-105 hover:-translate-y-1 text-center cursor-pointer whitespace-nowrap relative overflow-hidden group"
               >
-                {t('download_halol_app')}
+                <span className="relative z-10 flex items-center justify-center">
+                  <i className="ri-rocket-line mr-2"></i>
+                  {t('download_halol_app')}
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
               </Link>
               <Link
                 href="/products"
-                className="border-2 border-blue-600 text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-blue-600 hover:text-white transition-all transform hover:scale-105 text-center cursor-pointer whitespace-nowrap"
+                className="border-2 border-blue-600 text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-blue-600 hover:text-white transition-all transform hover:scale-105 hover:-translate-y-1 hover:shadow-xl text-center cursor-pointer whitespace-nowrap relative overflow-hidden group"
               >
-                {t('explore_products')}
+                <span className="flex items-center justify-center">
+                  <i className="ri-search-line mr-2"></i>
+                  {t('explore_products')}</span>
               </Link>
             </div>
 
