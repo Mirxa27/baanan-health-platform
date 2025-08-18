@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '../../../../lib/db';
 
+type TestResult = { name: string; status: string; details: string };
+
 export async function GET() {
   const results = {
-    database: { status: 'unknown', tests: [] },
-    apis: { status: 'unknown', tests: [] },
-    features: { status: 'unknown', tests: [] },
-    performance: { status: 'unknown', metrics: {} },
+    database: { status: 'unknown', tests: [] as TestResult[] },
+    apis: { status: 'unknown', tests: [] as TestResult[] },
+    features: { status: 'unknown', tests: [] as TestResult[] },
+    performance: { status: 'unknown', metrics: {} as Record<string, unknown> },
     timestamp: new Date().toISOString(),
   };
 

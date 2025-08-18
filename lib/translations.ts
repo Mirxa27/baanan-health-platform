@@ -9,6 +9,7 @@ import enResources from '../locales/en/resources.json';
 import enSignin from '../locales/en/signin.json';
 import enSignup from '../locales/en/signup.json';
 import enDashboard from '../locales/en/dashboard.json';
+import enNotFound from '../locales/en/not-found.json';
 
 import arCommon from '../locales/ar/common.json';
 import arHome from '../locales/ar/home.json';
@@ -21,6 +22,7 @@ import arResources from '../locales/ar/resources.json';
 import arSignin from '../locales/ar/signin.json';
 import arSignup from '../locales/ar/signup.json';
 import arDashboard from '../locales/ar/dashboard.json';
+import arNotFound from '../locales/ar/not-found.json';
 
 export const translations = {
   en: {
@@ -34,7 +36,8 @@ export const translations = {
     resources: enResources,
     signin: enSignin,
     signup: enSignup,
-    dashboard: enDashboard
+    dashboard: enDashboard,
+    'not-found': enNotFound
   },
   ar: {
     common: arCommon,
@@ -47,7 +50,8 @@ export const translations = {
     resources: arResources,
     signin: arSignin,
     signup: arSignup,
-    dashboard: arDashboard
+    dashboard: arDashboard,
+    'not-found': arNotFound
   }
 };
 

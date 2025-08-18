@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
       id: consultationId,
       ...validatedData,
       timestamp: new Date().toISOString(),
-      ip: request.ip || 'unknown',
+      ip: request.headers.get('x-forwarded-for') || 'unknown',
       userAgent: request.headers.get('user-agent') || 'unknown'
     });
     
